@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="Widget.Mini_Projet.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.Mini_Projet.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="color_med" parent="android:Widget">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    //Butoon
+    <style name="button_style" >
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+</resources>

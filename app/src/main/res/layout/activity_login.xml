@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login"
+    android:orientation="vertical"
+    android:background="@color/back_ground"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    >
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/icon_back"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Sign up"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/EmailInput"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/PasswordInput"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/rounded_edittext_bg"
+        android:hint="Username" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+        <TableRow
+            android:gravity="right"
+            >
+            <TextView
+                android:text="Forget your password ?"
+                android:textStyle="bold"
+                />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/Vector"
+                android:layout_gravity="center"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        style="@style/button_style"
+        android:background="@drawable/button_style"
+        android:text="LOGIN" />
+
+
+
+
+</LinearLayout>
