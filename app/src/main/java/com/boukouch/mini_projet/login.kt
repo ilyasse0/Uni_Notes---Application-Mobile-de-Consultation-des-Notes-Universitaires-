@@ -1,68 +1,81 @@
 package com.boukouch.mini_projet
 
-import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+
+import  android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import com.android.volley.AuthFailureError
 import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.StringRequest
+import com.boukouch.mini_projet.data.EndPoints
+import org.json.JSONException
 import org.json.JSONObject
+import java.io.IOException
 
-class login : AppCompatActivity() {
+
+
+class LoginActivity : AppCompatActivity() {
+      private var emailinput: EditText?=null
+      private var passwordinput: EditText?=null
+      private var txtview: TextView?=null
+      private var btnLogin: Button?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val btnLogin=findViewById<Button>(R.id.btnLogin)
-        val emailinput=findViewById<EditText>(R.id.EmailInput)
-        val passwordinput=findViewById<EditText>(R.id.PasswordInput)
+         btnLogin=findViewById<Button>(R.id.btnLogin)
+         txtview=findViewById<TextView>(R.id.txtview)
+         emailinput=findViewById<EditText>(R.id.EmailInput)
+         passwordinput=findViewById<EditText>(R.id.PasswordInput)
 
-        //Login Button :
-        btnLogin.setOnClickListener{
-            val email:String =emailinput.text.toString()
-            val pass:String=passwordinput.text.toString()
-            val url:String="http://10.0.2.2/UMI_DB/auth/login.php"
-            val params=HashMap<String,String>()
-            params["email"]=email
-            params["password"]=pass
-            val jO= JSONObject(params as Map<*, *>)
-            val rq:RequestQueue= Volley.newRequestQueue(this@login)
-            val jor= JsonObjectRequest(Request.Method.POST,url,jO, Response.Listener { res->
-                try {
-                    if(res.getString("success").equals("1")){
-                        val intent= Intent(this@login,MainActivity::class.java)
-                        intent.putExtra("UserName",res.getString("user"))
-                        startActivity(intent)
-                        emailinput.text.clear()
-                        passwordinput.text.clear()
-                    } else { alert("Message d'Erreur !",res.getString("message")) }
-
-                }catch (e:Exception){
-                    alert("Message d'Erreur !",""+e.message)
-                }
-            },Response.ErrorListener { err->
-                alert("Message d'Erreur !",""+err.message)
-            })
-            rq.add(jor)
-        }
-
+        btnLogin?.setOnClickListener {  login() }
 
 
 
 
     }
 
-    fun alert(title:String,message:String){
-        val builder= AlertDialog.Builder(this@login)
-        builder.setTitle(title)
-        builder.setMessage(message)
-        builder.setPositiveButton("Ok",{ dialogInterface: DialogInterface, i: Int -> }).create()
-        builder.show()
+
+
+    private fun login() {
+        //getting the record values
+        val email = emailinput?.text.toString()
+        val password = passwordinput?.text.toString()
+
+        //creating volley string request
+        val stringRequest = object : StringRequest(
+            Request.Method.POST, EndPoints.link_login,
+            Response.Listener<String> { response ->
+                try {
+                    val obj = JSONObject(response)
+                    Toast.makeText(applicationContext, obj.getString("status"), Toast.LENGTH_LONG).show()
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            },
+            object : Response.ErrorListener {
+                override fun onErrorResponse(volleyError: VolleyError) {
+                    Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show()
+                }
+            }) {
+            @Throws(AuthFailureError::class)
+            override fun getParams(): Map<String, String> {
+                val params = HashMap<String, String>()
+                params.put("email", email)
+                params.put("password", password)
+                return params
+            }
+        }
+
+        //adding request to queue
+        VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
 }
