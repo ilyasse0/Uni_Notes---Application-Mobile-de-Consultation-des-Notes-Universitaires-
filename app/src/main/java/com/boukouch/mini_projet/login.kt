@@ -14,6 +14,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
+import com.boukouch.mini_projet.Controller.LoginController
 import com.boukouch.mini_projet.data.EndPoints
 import org.json.JSONException
 import org.json.JSONObject
@@ -36,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
          emailinput=findViewById<EditText>(R.id.EmailInput)
          passwordinput=findViewById<EditText>(R.id.PasswordInput)
 
-        btnLogin?.setOnClickListener {  login() }
+        btnLogin?.setOnClickListener {LoginController.login(emailinput, passwordinput,this)}
 
 
 
@@ -57,6 +58,8 @@ class LoginActivity : AppCompatActivity() {
                 try {
                     val obj = JSONObject(response)
                     Toast.makeText(applicationContext, obj.getString("status"), Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, Home::class.java)
+                    startActivity(intent)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }

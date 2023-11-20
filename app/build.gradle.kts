@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.boukouch.mini_projet"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -49,6 +49,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
 
 
 }

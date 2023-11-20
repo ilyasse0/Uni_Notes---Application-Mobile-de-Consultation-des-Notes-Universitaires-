@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginTop="70dp"
+        android:drawableLeft="@drawable/email"
         android:background="@drawable/rounded_edittext_bg"
         android:hint="Username" />
 
@@ -40,6 +41,7 @@
         android:id="@+id/PasswordInput"
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:drawableLeft="@drawable/person"
         android:layout_marginTop="10dp"
 
         android:background="@drawable/rounded_edittext_bg"
@@ -73,14 +75,6 @@
         style="@style/button_style"
         android:background="@drawable/button_style"
         android:text="LOGIN" />
-
-    <TextView
-        android:id="@+id/txtview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="60dp"
-        android:text="eeeeeeeee"
-        />
 
 
 
