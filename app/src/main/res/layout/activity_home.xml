@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:id="@+id/drawerLayout">
+    android:id="@+id/drawerLayout"
+    android:background="@drawable/grad">
 
 
 
@@ -26,8 +27,30 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnOpenDrawer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:drawableStart="@drawable/ic_menu_arrow"
+            android:text="PARTIE POUR OPEN DRAWER!"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+        </LinearLayout>
+
+
+
+
+
+
         <TableLayout
-            android:background="@color/white2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tableLayout"
@@ -37,7 +60,7 @@
 
             <TableRow
                 android:padding="15dp"
-                android:background="@color/bleu"
+                android:background="@drawable/grade2"
                 android:layout_marginBottom="20dp"
                 >
                 <TextView
