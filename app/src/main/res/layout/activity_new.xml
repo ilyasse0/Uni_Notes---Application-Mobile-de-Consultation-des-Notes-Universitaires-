@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.LoginActivity"
+    tools:context=".View.NewPassword"
     android:orientation="vertical"
     android:background="@color/back_ground"
     android:layout_marginLeft="20dp"
@@ -29,7 +29,7 @@
         android:layout_marginTop="70dp"
         android:drawableLeft="@drawable/email"
         android:background="@drawable/rounded_edittext_bg"
-        android:hint="Username" />
+        android:hint="Email" />
 
     <EditText
         android:id="@+id/PasswordInput"
@@ -38,66 +38,52 @@
         android:inputType="textPassword"
         android:drawableLeft="@drawable/person"
         android:layout_marginTop="10dp"
-
         android:background="@drawable/rounded_edittext_bg"
-        android:hint="Username" />
+        android:hint="Password" />
 
 
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         >
+        <EditText
+            android:id="@+id/ConfirmPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/person"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Confirm Password" />
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
-
-            <!-- CheckBox on the left -->
             <CheckBox
                 android:id="@+id/show_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Show password" />
 
-            <!-- Empty space to push TextView to the right -->
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
-
-            <!-- TextView on the right -->
-            <TextView
-                android:id="@+id/forget_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forget your password ?"
-                android:textStyle="bold" />
-
-            <!-- ImageView as per your original code -->
-            <ImageView
-                android:id="@+id/frg_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/vector"
-                android:layout_gravity="center" />
         </TableRow>
-
     </TableLayout>
 
 
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            style="@style/button_style"
-            android:background="@drawable/button_style"
-            android:text="LOGIN"
-            />
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        style="@style/button_style"
+        android:background="@drawable/button_style"
+        android:text="SAVE"
+        />
 
     <ProgressBar
         android:id="@+id/loading"

@@ -1,16 +1,12 @@
-package com.boukouch.mini_projet
+package com.boukouch.mini_projet.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
+import com.boukouch.mini_projet.R
 import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {
@@ -23,7 +19,7 @@ class Home : AppCompatActivity() {
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
 
-        toggle= ActionBarDrawerToggle(this , drawerLayout , R.string.open , R.string.close)
+        toggle= ActionBarDrawerToggle(this , drawerLayout , R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navView.setNavigationItemSelectedListener {
