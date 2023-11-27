@@ -6,4 +6,5 @@ object EndPoints {
     val link_checkemail ="$URL_ROOT/ResetPassword/CheckEmail.php"
     val link_verifycompte ="$URL_ROOT/ResetPassword/verifycompte.php"
     val link_newpassword ="$URL_ROOT/ResetPassword/resetpassword.php"
+    val link_profil ="$URL_ROOT/profil/profile.php"
 }

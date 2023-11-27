@@ -16,6 +16,7 @@
         android:theme="@style/Theme.Mini_Projet"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".View.NewPassword"
             android:exported="false" />
@@ -28,9 +29,11 @@
         <activity
             android:name=".View.Home"
             android:exported="false" />
-
         <activity
             android:name=".View.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>
