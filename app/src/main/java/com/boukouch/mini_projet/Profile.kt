@@ -1,21 +1,25 @@
 package com.boukouch.mini_projet
 
+
+
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import com.boukouch.mini_projet.R.layout
 import com.google.android.material.textfield.TextInputEditText
 
 class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(layout.activity_profile)
     }
 
     fun onChangePasswordClick(view: View) {
         // Inflate the custom layout
-        val changePasswordView = LayoutInflater.from(this).inflate(R.layout.layout_change_password,null)
+        val changePasswordView = LayoutInflater.from(this).inflate(layout.layout_change_password,null)
 
         // Access the TextInputEditTexts in the custom layout
         val oldPasswordEditText = changePasswordView.findViewById<TextInputEditText>(R.id.editTextOldPassword)
@@ -43,4 +47,12 @@ class Profile : AppCompatActivity() {
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
     }
+
+    fun onBackButtonClick(view: View) {
+        // Create an Intent to start the activity_home.xml
+        val intent = Intent(this, Home::class.java)
+        startActivity(intent)
+    }
+
+
 }
