@@ -77,6 +77,7 @@ object ResetPassworController {
                     if(obj.getString("status")=="success"){
 
                         val intent = Intent(context, NewPassword::class.java)
+                        intent.putExtra("email", email)
                         context.startActivity(intent)
 
                     }

@@ -23,6 +23,8 @@ class NewPassword : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new)
 
+        val email_controller = intent.getStringExtra("email")
+
         EmailInput=findViewById<EditText>(R.id.EmailInput)
         PasswordInput=findViewById<EditText>(R.id.PasswordInput)
         ConfirmPasswordInput=findViewById<EditText>(R.id.ConfirmPasswordInput)
@@ -30,6 +32,8 @@ class NewPassword : AppCompatActivity() {
         btnLogin=findViewById<Button>(R.id.btnLogin)
 
 
+        //initialisation de email
+        EmailInput?.setText("$email_controller")
         //SEND
        btnLogin?.setOnClickListener {
 
@@ -37,12 +41,14 @@ class NewPassword : AppCompatActivity() {
             val password = PasswordInput?.text.toString()
             val confirmpassword = ConfirmPasswordInput?.text.toString()
 
-            if (!email.isNullOrBlank() && !password.isNullOrBlank() && !confirmpassword.isNullOrBlank()) {
+            if (!email.isNullOrBlank() && !password.isNullOrBlank() && !confirmpassword.isNullOrBlank() && password.toString()==confirmpassword.toString()) {
                 loading?.visibility = View.VISIBLE
                 ResetPassworController.newpassword(EmailInput,PasswordInput,this)
                 loading?.visibility = View.INVISIBLE
 
-            } else {
+            }else if(!email.isNullOrBlank() && !password.isNullOrBlank() && !confirmpassword.isNullOrBlank() && password.toString()!=confirmpassword.toString()){
+                Toast.makeText(this, " password and confirmpassword must be equal ", Toast.LENGTH_SHORT).show()
+            }else {
                 Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show()
             }
 

@@ -53,6 +53,12 @@
         android:background="@drawable/rounded_edittext_bg"
         android:hint="Verification Code" />
 
+    <CheckBox
+        android:id="@+id/show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show password" />
+
     <Button
         android:id="@+id/btn_send"
         android:layout_width="match_parent"

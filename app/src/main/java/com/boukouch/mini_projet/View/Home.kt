@@ -2,14 +2,21 @@ package com.boukouch.mini_projet.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.boukouch.mini_projet.R
 import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
 
-class Home : AppCompatActivity() {
+class Home : AppCompatActivity(){
 
     lateinit var toggle : ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +25,17 @@ class Home : AppCompatActivity() {
 
         val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
         val navView : NavigationView = findViewById(R.id.nav_view)
+        val btnOpenDrawer: Button = findViewById(R.id.btnOpenDrawer)
+
+
 
         toggle= ActionBarDrawerToggle(this , drawerLayout , R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        btnOpenDrawer.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+            Log.d("mesaaaaaaaaaage ", "Drawer opened")
+        }
         navView.setNavigationItemSelectedListener {
 
             when(it.itemId){
@@ -42,11 +56,18 @@ class Home : AppCompatActivity() {
         }
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)){
+        if (toggle.onOptionsItemSelected(item))
+
+        {
+            Log.d("mesa222222age ", "Drawer opened")
             return true
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }
 
