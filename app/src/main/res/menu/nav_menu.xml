@@ -37,12 +37,14 @@
             <item
                 android:id="@+id/nav_Comte"
                 android:icon="@drawable/baseline_login_24"
-                android:title="Compte"/>
+                android:title="Compte"
+                />
 
             <item
                 android:id="@+id/nav_Password"
                 android:icon="@drawable/baseline_password_24"
-                android:title="Changer Mot de Pass"/>
+                android:title="Changer Mot de Pass"
+                />
         </menu>
     </item>
 

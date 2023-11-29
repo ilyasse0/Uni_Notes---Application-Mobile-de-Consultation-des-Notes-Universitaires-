@@ -32,6 +32,7 @@
         <activity
             android:name=".View.LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".Profile"
             android:exported="true"
