@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".addNoteActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addNoteHeading"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:text="Add Note..."
+        android:textSize="25sp"
+        android:textColor="@color/orange"/>
+
+    <ImageView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/baseline_add_box_24" />
+</LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/titleEdit"
+        android:layout_height="60dp"
+        android:hint="Enter the Title"
+        android:padding="12dp"
+        android:textSize="20dp"
+        android:layout_below="@id/addNoteHeading"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="16dp"
+        android:maxLines="1" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/contentEDIT"
+        android:layout_height="match_parent"
+        android:hint="Entrer the description"
+        android:gravity="top"
+        android:padding="12dp"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="12dp"/>
+
+
+
+
+
+
+
+</LinearLayout>
