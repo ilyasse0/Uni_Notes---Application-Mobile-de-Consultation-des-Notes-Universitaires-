@@ -1,201 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
+    android:id="@+id/racine"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Profile"
     tools:ignore="ExtraText">
 
-    <!-- Back Button Icon -->
-    <ImageView
-        android:id="@+id/imageViewBack"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Back"
-        android:src="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="onBackButtonClick"/>
+    <LinearLayout
 
-    <!-- Settings Title -->
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Settings"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBack" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/container_1"
+        >
+        <ImageView
+            android:id="@+id/imageViewBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="onBackButtonClick"/>
 
-    <!-- Personal Information Subtitle -->
-    <TextView
-        android:id="@+id/textViewPersonalInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text=" tchecker fil dans dousser liniprojet j'ai le code et essayer pronde le design de login"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-
-    <!-- Nom et Prenom Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPersonalInfo"
-        app:boxBackgroundMode="filled">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Nom et Prenom"
+            android:layout_marginLeft="20dp"
+            android:text="Profile"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/nom"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
             android:inputType="none"
-            android:text="Hicham Moussaid"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:background="@drawable/rounded_edittext_bg" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Date de Naissance Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutBirthDate"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutName"
-        app:boxBackgroundMode="filled">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextBirthDate"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Nom" />
+        <EditText
+            android:id="@+id/prenom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Date de Naissance"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
             android:inputType="none"
-            android:text="01/01/1990"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:background="@drawable/rounded_edittext_bg" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- CNE Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCNE"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBirthDate"
-        app:boxBackgroundMode="filled">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextCNE"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Prenom" />
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CNE"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
             android:inputType="none"
-            android:text="L456789075"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:background="@drawable/rounded_edittext_bg" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Email Input -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNE"
-        app:boxBackgroundMode="filled">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Email" />
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:layout_marginTop="30dp">
+            <TableRow>
+
+                <TextView
+                    android:text="Password"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="start"/>
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textViewChangePassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="4dp"
+                    android:onClick="onChangePasswordClick"
+                    android:text="Change"
+                    android:textColor="@color/__gray"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/textViewPasswordSectionTitle"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPasswordSectionTitle" />
+
+            </TableRow>
+        </TableLayout>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
             android:inputType="none"
-            android:text="moussaidhicham545@gmail.com"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:background="@drawable/rounded_edittext_bg" />
+            android:background="@drawable/rounded_edittext_bg"
+            android:hint="Password" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-    <!-- Password Section Title -->
-    <TextView
-        android:id="@+id/textViewPasswordSectionTitle"
-        android:layout_width="wrap_content"
+    <!-- LinearLayout at the bottom -->
+    <LinearLayout
+        android:id="@+id/container_2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Password"
-        android:textSize="20sp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:paddingBottom="40dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail" />
-
-    <!-- Change Link -->
-
-    <!-- Password Input -->
-    <TextView
-        android:id="@+id/textViewChangePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="4dp"
-        android:text="Change"
-        android:textColor="@color/__gray"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewPasswordSectionTitle"
-        app:layout_constraintTop_toTopOf="@+id/textViewPasswordSectionTitle"
-        android:onClick="onChangePasswordClick"/>
+        android:background="@drawable/top_radius"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
+        <EditText
+            android:id="@+id/old_password"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
+            android:inputType="none"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Old password" />
+        <EditText
+            android:id="@+id/new_password"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="none"
+            android:hint="New Password" />
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_edittext"
+            android:inputType="none"
+            android:hint="Repeat New Password" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPasswordSectionTitle"
-        app:boxBackgroundMode="filled">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
+        <Button
+            android:id="@+id/btnsave"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            style="@style/button_style"
+            android:background="@drawable/button_style"
+            android:text="Save"
+            />
+        <TextView
+            android:id="@+id/status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:text="123456"
-            android:focusable="false"
-            android:background="@drawable/rounded_edittext_bg" />
+            android:textSize="30dp"
+            />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

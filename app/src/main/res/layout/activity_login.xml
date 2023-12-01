@@ -28,7 +28,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="70dp"
         android:drawableLeft="@drawable/email"
-        android:background="@drawable/rounded_edittext_bg"
+        android:background="@drawable/rounded_edittext"
         android:hint="Username" />
 
     <EditText
@@ -38,8 +38,7 @@
         android:inputType="textPassword"
         android:drawableLeft="@drawable/person"
         android:layout_marginTop="10dp"
-
-        android:background="@drawable/rounded_edittext_bg"
+        android:background="@drawable/rounded_edittext"
         android:hint="Username" />
 
 
