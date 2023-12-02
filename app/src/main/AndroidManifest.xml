@@ -26,13 +26,13 @@
             android:name=".View.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".View.Home"
+            android:name=".View.Profile"
             android:exported="false" />
         <activity
             android:name=".View.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile"
+            android:name=".View.Home"
             android:exported="true"
             tools:ignore="MissingClass">
             <intent-filter>

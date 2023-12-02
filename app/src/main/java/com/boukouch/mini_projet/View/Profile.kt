@@ -1,5 +1,5 @@
 
-package com.boukouch.mini_projet
+package com.boukouch.mini_projet.View
 
 
 
@@ -8,32 +8,24 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
-import android.widget.Toast.makeText
-import androidx.appcompat.app.AlertDialog
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.boukouch.mini_projet.Controller.LoginController
+import com.boukouch.mini_projet.R
 import com.boukouch.mini_projet.R.layout
-import com.boukouch.mini_projet.View.Home
+import com.boukouch.mini_projet.VolleySingleton
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Etudiant
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONException
 import org.json.JSONObject
 

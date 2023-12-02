@@ -44,7 +44,6 @@ import org.json.JSONObject
     }
 }*/
 
-
 class Home : AppCompatActivity() {
 
     private var listView: ListView? = null
@@ -58,43 +57,6 @@ class Home : AppCompatActivity() {
         artistList = mutableListOf<Artist>()
         loadArtists("xxx")
     }
-
-    /*private fun loadArtists() {
-        val stringRequest = StringRequest(
-            Request.Method.POST,
-            EndPoints.link_selectnotes,
-            { s ->
-                try {
-                    val obj = JSONObject(s)
-                    if (!obj.getBoolean("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getString("status"), Toast.LENGTH_LONG).show()
-
-                        val array = obj.getJSONArray("data")
-
-                        for (i in 0..array.length() - 1) {
-                            val objectArtist = array.getJSONObject(i)
-                            val artist = Artist(
-                                objectArtist.getString("resultat"),
-                                objectArtist.getString("nom_matier")
-                            )
-                            val add = artistList!!.add(artist)
-                            val adapter = ArtistList(this@Home, artistList!!)
-                            listView!!.adapter = adapter
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), obj.getString("status"), Toast.LENGTH_LONG).show()
-                    }
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            },
-            { volleyError -> Toast.makeText(applicationContext, volleyError.message, Toast.LENGTH_LONG).show() })
-       val requestQueue = Volley.newRequestQueue(this)
-        requestQueue.add<String>(stringRequest)
-
-
-
-    }*/
     fun loadArtists(cne: String) {
         // Creating a volley string request
         val stringRequest = object : StringRequest(
