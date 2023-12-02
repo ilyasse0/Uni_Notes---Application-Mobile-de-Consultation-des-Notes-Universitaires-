@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity_note">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,14 +20,15 @@
         android:layout_marginStart="18dp"
         android:textColor="@color/orange"
         android:textSize="24sp"
-        />
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/notesRecycleView"
+        android:id="@+id/noteRecycleView"
         android:layout_marginTop="50dp"
-        android:padding="16dp"/>
+        android:padding="16dp"
+        android:onClick="onBackButtonClick"/>
 
 
 
@@ -37,6 +43,8 @@
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="0dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

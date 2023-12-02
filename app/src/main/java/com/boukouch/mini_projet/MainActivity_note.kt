@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.boukouch.mini_projet.adapter.Noteadapter
 import com.boukouch.mini_projet.dao.NoteHelper
@@ -18,12 +19,12 @@ class MainActivity_note : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainNoteBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main_note)
         db= NoteHelper(this)
         noteAdapter= Noteadapter(db.getAllNotes(),this)
 
-         binding.notesRecycleView.layoutManager=LinearLayoutManager(this)
-        binding.notesRecycleView.adapter=noteAdapter
+         binding.noteRecycleView.layoutManager=LinearLayoutManager(this)
+        binding.noteRecycleView.adapter=noteAdapter
 
         binding.AddButton.setOnClickListener{
             Log.d(" debuging" , "this is cheeking for the log" )
@@ -37,6 +38,14 @@ class MainActivity_note : AppCompatActivity() {
         super.onResume()
         noteAdapter.refreshData(db.getAllNotes())
 
+    }
+
+
+    fun onBackButtonClick(view: View) {
+        // Create an Intent to start the activity_home.xml
+        val intent = Intent(this, MainActivity_note::class.java)
+
+        startActivity(intent)
     }
 
 
