@@ -5,48 +5,81 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.boukouch.mini_projet.adapter.Noteadapter
 import com.boukouch.mini_projet.dao.NoteHelper
 import com.boukouch.mini_projet.databinding.ActivityMainBinding
 import com.boukouch.mini_projet.databinding.ActivityMainNoteBinding
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity_note : AppCompatActivity() {
-    private lateinit var binding :ActivityMainNoteBinding
-    private lateinit var db: NoteHelper
-    private lateinit var noteAdapter :Noteadapter
+    lateinit var AddButton : Button
+    lateinit var toggle : ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainNoteBinding.inflate(layoutInflater)
+
         setContentView(R.layout.activity_main_note)
-        db= NoteHelper(this)
-        noteAdapter= Noteadapter(db.getAllNotes(),this)
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+        AddButton=findViewById(R.id.Addbutton)
 
-         binding.noteRecycleView.layoutManager=LinearLayoutManager(this)
-        binding.noteRecycleView.adapter=noteAdapter
 
-        binding.AddButton.setOnClickListener{
-            Log.d(" debuging" , "this is cheeking for the log" )
-            val intent = Intent(this , addNoteActivity::class.java)
-            startActivity(intent)
 
+
+        toggle= ActionBarDrawerToggle(this , drawerLayout , R.string.open , R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+
+        navView.setNavigationItemSelectedListener {
+
+            when(it.itemId){
+                R.id.nav_home -> Toast.makeText(this , "Clicked Message" , Toast.LENGTH_LONG).show()
+                R.id.nav_message -> {
+                    val intent = Intent(this, Home::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_Memo -> {
+                    val intent = Intent(this, MainActivity_note::class.java)
+                    startActivity(intent)
+                    Log.d("Home", "memeo Home")
+                }
+                R.id.nav_settings -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
+                R.id.nav_Comte -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
+                R.id.nav_Password -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
+                R.id.nav_share -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_feedback -> Toast.makeText(applicationContext , "Clicked FeedBack" , Toast.LENGTH_LONG).show()
+
+
+
+
+            }
+            true
         }
+
+        AddButton.setOnClickListener{
+            val intent =Intent(this , addNoteActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
+
+
     }
 
-    override fun onResume() {
-        super.onResume()
-        noteAdapter.refreshData(db.getAllNotes())
-
-    }
 
 
-    fun onBackButtonClick(view: View) {
-        // Create an Intent to start the activity_home.xml
-        val intent = Intent(this, MainActivity_note::class.java)
-
-        startActivity(intent)
-    }
 
 
 }
