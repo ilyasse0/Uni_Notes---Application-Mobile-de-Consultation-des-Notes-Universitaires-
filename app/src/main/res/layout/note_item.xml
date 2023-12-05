@@ -29,6 +29,16 @@
                 android:textColor="@color/orange"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/updatebtn"
+                android:src="@drawable/baseline_edit_24"/>
+
+
         </RelativeLayout>
 
         <TextView

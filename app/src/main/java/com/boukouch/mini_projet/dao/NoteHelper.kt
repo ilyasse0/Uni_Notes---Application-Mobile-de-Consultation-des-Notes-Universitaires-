@@ -2,12 +2,12 @@ package com.boukouch.mini_projet.dao
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.boukouch.mini_projet.model.Note
 
-class NoteHelper(context : Context) :SQLiteOpenHelper(context , DATABASE_NAME,null ,
-    DATABASE_VERSION) {
+class NoteHelper(context : Context) :SQLiteOpenHelper(context , DATABASE_NAME,null , DATABASE_VERSION) {
 
 
     companion object{
@@ -22,16 +22,18 @@ class NoteHelper(context : Context) :SQLiteOpenHelper(context , DATABASE_NAME,nu
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL(("CREATE TABLE $DATABASE_NAME ("+
-
-                "$COLUMN_ID INT PRIMARY KEY,"+
-                "$COLUMN_TITLE TEXT,"+
-                "$COLUMN_CONTENT TEXT)"
-                ))    }
+        val createTableQuery = (
+                "CREATE TABLE $TABLE_NAME (" +
+                        "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "$COLUMN_TITLE TEXT," +
+                        "$COLUMN_CONTENT TEXT)"
+                )
+        db?.execSQL(createTableQuery)
+    }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL("DROP TABLE IF EXISTS $DATABASE_NAME")
-        this.onCreate(db)
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
     }
 
     fun insertNotes(note: Note) : Long{
@@ -46,22 +48,52 @@ class NoteHelper(context : Context) :SQLiteOpenHelper(context , DATABASE_NAME,nu
 
 
 
-    fun getAllNotes():List<Note> {
-        val noteListe = mutableListOf<Note>()
-        val db=readableDatabase
+    fun getAllNotes(): ArrayList<Note> {
+        val studentsList: ArrayList<Note> = ArrayList()
         val query = "SELECT * FROM $TABLE_NAME"
-        val cursor = db.rawQuery(query , null)
+        val database = this.readableDatabase
+        var cursor: Cursor? = null
 
-        while (cursor.moveToNext()){
-            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
-            val title=cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
-            val content=cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+        try {
+            cursor = database.rawQuery(query, null)
 
-            val note = Note(id ,title,content)
-            noteListe.add(note)
+            var id: Int
+            var title: String
+            var content: String
+            var index: Int
+
+            if (cursor.moveToFirst()) {
+                do {
+                    index = cursor.getColumnIndex("id")
+                    id = cursor.getInt(index)
+                    index = cursor.getColumnIndex("title")
+                    title = cursor.getString(index)
+                    index = cursor.getColumnIndex("content")
+                    content = cursor.getString(index)
+
+                    val student = Note(title, content)
+                    student.id = id
+                    studentsList.add(student)
+                } while (cursor.moveToNext())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            cursor?.close()
         }
-        cursor.close()
-        db.close()
-        return noteListe
+
+        return studentsList
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -1,9 +1,11 @@
 package com.boukouch.mini_projet.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.boukouch.mini_projet.R
@@ -14,8 +16,6 @@ class Noteadapter (private var notes:List<Note> , context:Context): RecyclerView
         val titleTextView:TextView=note_item.findViewById(R.id.titleTextView)
         val contentTextView :TextView=note_item.findViewById(R.id.contentTextView)
         class NoteViewHolder(note_item: View):RecyclerView.ViewHolder(note_item){
-
-
         }
     }
 
@@ -35,6 +35,7 @@ class Noteadapter (private var notes:List<Note> , context:Context): RecyclerView
         val note=notes[position]
         holder.titleTextView.text=note.title
         holder.contentTextView.text=note.content
+
 
 
     }
