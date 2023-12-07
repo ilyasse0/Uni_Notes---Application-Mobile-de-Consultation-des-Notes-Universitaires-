@@ -37,15 +37,20 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_Memo -> {
                     val intent = Intent(this, MainActivity_note::class.java)
                     startActivity(intent)
-
                 }
                 R.id.nav_settings -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
                 R.id.nav_Comte -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
-                R.id.nav_Password -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
+                R.id.nav_Password -> {Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
+
+
+                }
+
+
                 R.id.nav_share -> {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
+
                 R.id.nav_feedback -> Toast.makeText(applicationContext , "Clicked FeedBack" , Toast.LENGTH_LONG).show()
 
 
