@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.boukouch.mini_projet.adapter.Noteadapter
+
 import com.boukouch.mini_projet.dao.NoteHelper
 import com.boukouch.mini_projet.databinding.ActivityMainBinding
 import com.boukouch.mini_projet.databinding.ActivityMainNoteBinding

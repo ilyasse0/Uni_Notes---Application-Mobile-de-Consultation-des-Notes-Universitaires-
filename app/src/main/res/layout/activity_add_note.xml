@@ -45,19 +45,14 @@
         android:maxLines="1" />
 
     <EditText
-        android:layout_width="match_parent"
         android:id="@+id/contentEDIT"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Entrer the description"
-        android:gravity="top"
-        android:padding="12dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/orange_border"
-        android:layout_marginTop="12dp"/>
-
-
-
-
-
+        android:gravity="top"
+        android:hint="Entrer the description"
+        android:padding="12dp" />
 
 
 </LinearLayout>
