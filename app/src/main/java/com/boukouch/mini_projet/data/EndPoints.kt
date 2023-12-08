@@ -1,7 +1,8 @@
 package com.boukouch.mini_projet.data
 
 object EndPoints {
-    private val URL_ROOT = "http://10.0.2.2/UMI_DB"
+    private val URL_ROOT = "https://kotlinboukouchtest.000webhostapp.com"
+
     //Login
     val link_login ="$URL_ROOT/auth/login.php"
 

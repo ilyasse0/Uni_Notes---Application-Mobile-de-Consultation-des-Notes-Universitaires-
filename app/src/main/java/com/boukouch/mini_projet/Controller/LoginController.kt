@@ -56,7 +56,7 @@ import org.json.JSONObject
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String> {
                 val params = HashMap<String, String>()
-                params["email"] = email
+                params["cne"] = email
                 params["password"] = password
                 return params
             }

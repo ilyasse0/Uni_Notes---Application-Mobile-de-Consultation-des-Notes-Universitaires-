@@ -55,7 +55,7 @@ class Home : AppCompatActivity() {
 
         listView = findViewById(R.id.listViewArtists) as ListView
         artistList = mutableListOf<Artist>()
-        loadArtists("xxx")
+        loadArtists("bbb")
     }
     fun loadArtists(cne: String) {
         // Creating a volley string request
