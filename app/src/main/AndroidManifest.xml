@@ -16,6 +16,16 @@
         android:theme="@style/Theme.Mini_Projet"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".addNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Recuperation_mot_pass_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
         <activity
             android:name=".View.NewPassword"
             android:exported="false" />
@@ -26,15 +36,15 @@
             android:name=".View.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".View.Home"
+            android:name=".View.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".View.Profile"
             android:exported="false" />
+
         <activity
-            android:name=".View.LoginActivity"
-            android:exported="true"
-            tools:ignore="MissingClass">
+            android:name=".View.Home"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

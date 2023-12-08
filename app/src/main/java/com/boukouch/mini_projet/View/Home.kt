@@ -1,35 +1,26 @@
 package com.boukouch.mini_projet.View
 
-import android.annotation.SuppressLint
-import android.content.ClipData.Item
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
-
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+
 import android.widget.ListView
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import android.widget.Toast.makeText
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.view.menu.MenuView.ItemView
-import androidx.drawerlayout.widget.DrawerLayout
 import com.boukouch.mini_projet.R
-import com.google.android.material.navigation.NavigationView
-import androidx.core.view.GravityCompat
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.boukouch.mini_projet.Adapter.ArtistList
+import com.boukouch.mini_projet.Adapter.MatiereList
 import com.boukouch.mini_projet.VolleySingleton
 import com.boukouch.mini_projet.data.EndPoints
-import com.boukouch.mini_projet.model.Artist
+import com.boukouch.mini_projet.model.Matiere
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -47,15 +38,46 @@ import org.json.JSONObject
 class Home : AppCompatActivity() {
 
     private var listView: ListView? = null
-    private var artistList: MutableList<Artist>? = null
+    private var artistList: MutableList<Matiere>? = null
+    private var nom: TextView? = null
+    private var prenom: TextView? = null
+    private var filiere: TextView? = null
+    private var cne_etd: TextView? = null
+    private var spinner: Spinner? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val spinnerData = arrayOf("Semestre 1", "Semestre 2", "Semestre 3")
         listView = findViewById(R.id.listViewArtists) as ListView
-        artistList = mutableListOf<Artist>()
-        loadArtists("bbb")
+        artistList = mutableListOf<Matiere>()
+        nom = findViewById(R.id.nom)
+        prenom = findViewById(R.id.prenom)
+        filiere = findViewById(R.id.filier)
+        cne_etd = findViewById(R.id.cne)
+        spinner = findViewById<Spinner>(R.id.spiner) // Replace with your Spinner ID
+
+        // 3. Create an ArrayAdapter and set it to the Spinner
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerData)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner?.adapter = adapter
+
+        // 4. Optionally, set an OnItemSelectedListener
+        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // Handle the selected item here
+                val selectedItem = parent?.getItemAtPosition(position).toString()
+                Toast.makeText(this@Home, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Do nothing here
+            }
+        }
+
+
+        loadArtists("a123")
     }
     fun loadArtists(cne: String) {
         // Creating a volley string request
@@ -67,7 +89,7 @@ class Home : AppCompatActivity() {
                     val obj = JSONObject(response)
                     if (obj.getString("status") == "success") {
                         val array = obj.getJSONArray("data")
-                        makeText(this, "${array.toString()}", LENGTH_SHORT).show()
+                        makeText(this, "Sucssfull", LENGTH_SHORT).show()
 
                         //Toast.makeText(this, "${array.toString()}", Toast.LENGTH_SHORT).show()
                         if (array.length() > 0) {
@@ -75,18 +97,24 @@ class Home : AppCompatActivity() {
 
                             for (i in 0..array.length() - 1) {
                                 val objectArtist = array.getJSONObject(i)
-                                val artist = Artist(
+                                val artist = Matiere(
+                                    objectArtist.getString("nom_matier"),
                                     objectArtist.getString("resultat"),
-                                    objectArtist.getString("nom_matier")
+                                    objectArtist.getString("annee_univ"),
+                                    objectArtist.getString("status")
                                 )
+                               nom?.text=objectArtist.getString("nom")
+                                prenom?.text=objectArtist.getString("prenom")
+                                filiere?.text=objectArtist.getString("filiere")
+                                cne_etd?.text=objectArtist.getString("cne")
                                 val add = artistList!!.add(artist)
-                                val adapter = ArtistList(this@Home, artistList!!)
+                                val adapter = MatiereList(this@Home, artistList!!)
                                 listView!!.adapter = adapter
                             }
                             // nom?.setText("dhhhhh")
                         }
                     } else {
-                        Toast.makeText(this, "Ajiiiya", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "error ", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()

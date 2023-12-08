@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Recuperation_mot_pass_Activity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:text="Récuperation Mot de Pass ou  Email Académique "
+            android:textSize="25sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Votre Code Massar ou CNE*"
+        android:padding="12dp"
+        android:textSize="20dp"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="20dp"
+        android:maxLines="1" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N carte nationale d'identité / Numéro de la carte de résidence*"
+        android:padding="12dp"
+        android:textSize="20dp"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="20dp"
+         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Date de naissance*"
+            android:id="@+id/date_input"
+            android:padding="12dp"
+            android:textSize="20dp"
+             />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_date_range_24"
+            android:padding="12dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="90dp"
+            android:id="@+id/date_image_input"/>
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:hint="Année d'obtention du baccalauréat *"
+
+        android:padding="12dp"
+        android:background="@drawable/orange_border"
+        android:layout_marginTop="20dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Envoyer"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fermer"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
