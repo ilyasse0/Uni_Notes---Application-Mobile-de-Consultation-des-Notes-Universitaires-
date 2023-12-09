@@ -11,9 +11,9 @@
         android:title="Consulter Notes"/>
 
     <item
-    android:id="@+id/nav_home"
+    android:id="@+id/mail_academique"
     android:icon="@drawable/baseline_message_24"
-    android:title="Message"/>
+    android:title="Récupération Mail académiques"/>
 
     <item
         android:id="@+id/nav_Memo"

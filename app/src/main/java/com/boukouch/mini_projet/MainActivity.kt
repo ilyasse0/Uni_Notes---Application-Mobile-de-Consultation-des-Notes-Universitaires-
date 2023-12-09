@@ -29,7 +29,10 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
 
             when(it.itemId){
-                R.id.nav_home -> Toast.makeText(this , "Clicked Message" , Toast.LENGTH_LONG).show()
+                R.id.mail_academique -> {Toast.makeText(this , "Mail Académique" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, Recuperation_mot_pass_Activity::class.java)
+                    startActivity(intent)
+                }
                 R.id.nav_message -> {
                     val intent = Intent( this, Home::class.java)
                     startActivity(intent)
