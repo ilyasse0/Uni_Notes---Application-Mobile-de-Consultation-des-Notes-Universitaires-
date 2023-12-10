@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.boukouch.mini_projet.View.Home
 import com.boukouch.mini_projet.VolleySingleton
+import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.data.EndPoints
 import org.json.JSONException
 import org.json.JSONObject
@@ -24,7 +25,7 @@ import org.json.JSONObject
 
     fun login(emailInput: EditText?, passwordInput: EditText?, context: Context) {
         // Getting the record values
-        val email = emailInput?.text.toString()
+        val cne = emailInput?.text.toString()
         val password = passwordInput?.text.toString()
 
         // Creating a volley string request
@@ -35,8 +36,8 @@ import org.json.JSONObject
                 try {
                     val obj = JSONObject(response)
                     if(obj.getString("status")=="success"){
-                        saveUserEmail(email, context)
-                        val intent = Intent(context, Home::class.java)
+                        saveUserCNE(cne, context)
+                        val intent = Intent(context, accueille::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         context.startActivity(intent)
 
@@ -56,7 +57,7 @@ import org.json.JSONObject
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String> {
                 val params = HashMap<String, String>()
-                params["cne"] = email
+                params["cne"] = cne
                 params["password"] = password
                 return params
             }
@@ -66,16 +67,16 @@ import org.json.JSONObject
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
 
-     private fun saveUserEmail(email: String, context: Context) {
+     private fun saveUserCNE(cne: String, context: Context) {
          val sharedPreferences: SharedPreferences =
              context.getSharedPreferences("PREF_NAME" , Context.MODE_PRIVATE)
          val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
-         editor.putString("KEY_USER_EMAIL", email)
+         editor.putString("KEY_USER_EMAIL", cne)
          editor.apply()
      }
 
-     fun getUserEmail(context: Context): String? {
+     fun getUserCNE(context: Context): String? {
          val sharedPreferences: SharedPreferences =
              context.getSharedPreferences("PREF_NAME", Context.MODE_PRIVATE)
 

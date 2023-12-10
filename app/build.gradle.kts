@@ -49,6 +49,7 @@ dependencies {
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.privacysandbox.tools:tools-core:1.0.0-alpha06")
     implementation("androidx.room:room-common:2.6.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.android.material:material:1.4.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -59,3 +60,8 @@ dependencies {
 
 
 }}
+dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+}

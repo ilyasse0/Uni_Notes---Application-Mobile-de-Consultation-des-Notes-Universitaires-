@@ -48,11 +48,9 @@ class LoginActivity : AppCompatActivity() {
                 loading?.visibility = View.VISIBLE
                 LoginController.login(emailinput, passwordinput, this)
                 loading?.visibility = View.INVISIBLE
-
             } else {
                 Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         forget_password?.setOnClickListener {

@@ -113,6 +113,8 @@
             android:background="@drawable/rounded_edittext_bg"
             android:hint="Password" />
 
+
+
     </LinearLayout>
 
     <!-- LinearLayout at the bottom -->
@@ -141,14 +143,16 @@
             android:inputType="none"
             android:background="@drawable/rounded_edittext"
             android:hint="Old password" />
+
         <EditText
             android:id="@+id/new_password"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_edittext"
-            android:inputType="none"
-            android:hint="New Password" />
+            android:hint="New Password"
+            android:inputType="none" />
+
         <EditText
             android:id="@+id/confirm_password"
             android:layout_width="match_parent"

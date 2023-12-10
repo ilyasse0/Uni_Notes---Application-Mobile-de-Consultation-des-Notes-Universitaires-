@@ -16,15 +16,20 @@
         android:theme="@style/Theme.Mini_Projet"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name=".addNoteActivity"
+            android:name=".View.MainActivity_note"
             android:exported="false" />
         <activity
-            android:name=".Recuperation_mot_pass_Activity"
+            android:name=".View.Home"
             android:exported="false" />
         <activity
-            android:name=".UpdateActivity"
+            android:name=".View.addNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.Recuperation_email_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".View.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".View.NewPassword"
@@ -41,9 +46,8 @@
         <activity
             android:name=".View.Profile"
             android:exported="false" />
-
         <activity
-            android:name=".View.Home"
+            android:name=".accueille"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

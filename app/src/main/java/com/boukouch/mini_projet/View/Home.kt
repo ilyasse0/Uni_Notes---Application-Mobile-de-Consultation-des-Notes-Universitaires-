@@ -18,6 +18,7 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.boukouch.mini_projet.Adapter.MatiereList
+import com.boukouch.mini_projet.Controller.LoginController
 import com.boukouch.mini_projet.VolleySingleton
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Matiere
@@ -49,7 +50,7 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val spinnerData = arrayOf("Semestre 1", "Semestre 2", "Semestre 3")
+        val spinnerData = arrayOf("1","2","3","4","5","6")
         listView = findViewById(R.id.listViewArtists) as ListView
         artistList = mutableListOf<Matiere>()
         nom = findViewById(R.id.nom)
@@ -58,6 +59,7 @@ class Home : AppCompatActivity() {
         cne_etd = findViewById(R.id.cne)
         spinner = findViewById<Spinner>(R.id.spiner) // Replace with your Spinner ID
 
+        val cne= LoginController.getUserCNE(this)
         // 3. Create an ArrayAdapter and set it to the Spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerData)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -68,7 +70,8 @@ class Home : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 // Handle the selected item here
                 val selectedItem = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(this@Home, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Home, "Semestre$selectedItem", Toast.LENGTH_SHORT).show()
+                loadNotes("$cne","$selectedItem")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -77,9 +80,9 @@ class Home : AppCompatActivity() {
         }
 
 
-        loadArtists("a123")
+
     }
-    fun loadArtists(cne: String) {
+    fun loadNotes(cne: String,selectedItem:String) {
         // Creating a volley string request
         val stringRequest = object : StringRequest(
             Request.Method.POST, EndPoints.link_selectnotes,
@@ -121,8 +124,7 @@ class Home : AppCompatActivity() {
                 }
             },
 
-            object : Response.ErrorListener {
-                override fun onErrorResponse(volleyError: VolleyError) {
+            object : Response.ErrorListener {override fun onErrorResponse(volleyError: VolleyError) {
                     // Handle error response
                     volleyError.printStackTrace()
                 }
@@ -130,6 +132,7 @@ class Home : AppCompatActivity() {
             override fun getParams(): Map<String, String> {
                 val params = HashMap<String, String>()
                 params["cne"] = cne
+                params["semestre"] = selectedItem
                 return params
             }
         }

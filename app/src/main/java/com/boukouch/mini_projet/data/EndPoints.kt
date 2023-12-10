@@ -18,7 +18,9 @@ object EndPoints {
     //SHow Notes
     val link_selectnotes ="$URL_ROOT/universite/Select_Note.php"
 
-    //Change password
+    //Annonces
+    val link_select_annonces ="$URL_ROOT/annonce/select_annonce.php"
+
 
 
 }

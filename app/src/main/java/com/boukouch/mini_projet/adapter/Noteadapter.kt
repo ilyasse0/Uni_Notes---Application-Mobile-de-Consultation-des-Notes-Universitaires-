@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.boukouch.mini_projet.R
-import com.boukouch.mini_projet.UpdateActivity
+import com.boukouch.mini_projet.View.UpdateActivity
 import com.boukouch.mini_projet.dao.NoteHelper
 import com.boukouch.mini_projet.model.Note
 
@@ -23,11 +23,6 @@ private val db:NoteHelper = NoteHelper(context)
         val contentTextView :TextView=note_item.findViewById(R.id.contentTextView)
         val updateBtn : ImageView=note_item.findViewById(R.id.updatebtn)
         val deleteeBtn : ImageView=note_item.findViewById(R.id.deleteebtn)
-
-
-
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {

@@ -1,16 +1,15 @@
-package com.boukouch.mini_projet
+package com.boukouch.mini_projet.View
 
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.boukouch.mini_projet.R
 import com.boukouch.mini_projet.dao.NoteHelper
-import com.boukouch.mini_projet.databinding.ActivityMainBinding
 import com.boukouch.mini_projet.model.Note
 
 class UpdateActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
     private lateinit var db : NoteHelper
     private lateinit var title_editEdit : EditText
     private lateinit var content_editEDIT : EditText

@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.boukouch.mini_projet.R
+import com.boukouch.mini_projet.model.Annonces
 import com.boukouch.mini_projet.model.Matiere
 
-class MatiereList(private val context: Activity, internal var matiere: List<Matiere>) : ArrayAdapter<Matiere>(context, R.layout.viewartists, matiere) {
+class MatiereList(private val context: Activity, internal var matiere: MutableList<Matiere>) : ArrayAdapter<Matiere>(context, R.layout.viewartists, matiere) {
 
 
     @SuppressLint("MissingInflatedId")

@@ -20,6 +20,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
+import com.boukouch.mini_projet.Controller.LoginController
 import com.boukouch.mini_projet.R
 import com.boukouch.mini_projet.R.layout
 import com.boukouch.mini_projet.VolleySingleton
@@ -50,7 +51,9 @@ class Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_profile)
 
-        fetchStudentData("D136110674")
+        val cne= LoginController.getUserCNE(this)
+
+        fetchStudentData("$cne")
 
         textViewChangePassword=findViewById(R.id.textViewChangePassword)
         prenom=findViewById(R.id.prenom)
@@ -74,7 +77,7 @@ class Profile : AppCompatActivity() {
             val confirm_password = confirm_password?.text.toString()
             if(!old_password.isNullOrBlank() && !new_password.isNullOrBlank() && !confirm_password.isNullOrBlank()){
                 if(new_password.toString()==confirm_password.toString()){
-                    change_password("222")
+                    change_password("$cne")
                 }
             }else{
                 showSnackbar("Champes cannot be empty")
@@ -118,7 +121,9 @@ class Profile : AppCompatActivity() {
                                     objectArtist.getString("nom"),
                                     objectArtist.getString("prenom"),
                                     objectArtist.getString("email"),
-                                    objectArtist.getString("cne"))
+                                    objectArtist.getString("cne"),
+                                    objectArtist.getString("email_acadimic"),
+                                    objectArtist.getString("password_email_aca"))
 
                                 nom?.setText(etudiant.nom)
                                 prenom?.setText(etudiant.prenom)
@@ -199,6 +204,8 @@ class Profile : AppCompatActivity() {
 
         // Adding request to the queue
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
+
+
     }
 
     fun onBackButtonClick(view: View) {

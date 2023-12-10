@@ -6,29 +6,22 @@
 
 
     <item
-        android:id="@+id/nav_message"
+        android:id="@+id/note"
         android:icon="@drawable/baseline_event_note_24"
         android:title="Consulter Notes"/>
 
     <item
-    android:id="@+id/nav_home"
-    android:icon="@drawable/baseline_message_24"
-    android:title="Message"/>
+    android:id="@+id/email"
+    android:icon="@drawable/email_aca"
+    android:title="Email Académique"/>
 
     <item
         android:id="@+id/nav_Memo"
         android:icon="@drawable/baseline_message_24"
         android:title="Memo"/>
-
-
-
-
-
-
-
     <item
-        android:id="@+id/nav_settings"
-        android:title="Parametre"
+        android:id="@+id/profile"
+        android:title="Profile"
         android:icon="@drawable/baseline_settings_24"
         />
 
