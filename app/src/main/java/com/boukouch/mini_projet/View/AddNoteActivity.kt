@@ -1,15 +1,12 @@
-package com.boukouch.mini_projet
+package com.boukouch.mini_projet.View
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.boukouch.mini_projet.R
 import com.boukouch.mini_projet.dao.NoteHelper
-import com.boukouch.mini_projet.databinding.ActivityAddNoteBinding
-import com.boukouch.mini_projet.databinding.ActivityMainNoteBinding
 import com.boukouch.mini_projet.model.Note
 
 class addNoteActivity : AppCompatActivity() {

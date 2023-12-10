@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".VolleySingleton"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,25 +14,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mini_Projet"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name=".addNoteActivity"
+            android:name=".View.MainActivity_note"
             android:exported="false" />
         <activity
-            android:name=".Recuperation_mot_pass_Activity"
+            android:name=".View.Home"
             android:exported="false" />
         <activity
-            android:name=".UpdateActivity"
+            android:name=".View.addNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".View.Recuperation_email_Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_note"
+            android:name=".View.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".View.NewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".View.VerificationCompte"
+            android:exported="false" />
+        <activity
+            android:name=".View.ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".accueille"
+            android:exported="false" />
+        <activity
+            android:name=".View.Profile"
+            android:exported="false" />
+        <activity
+            android:name=".View.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

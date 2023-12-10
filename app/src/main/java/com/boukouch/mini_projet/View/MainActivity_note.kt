@@ -1,21 +1,19 @@
-package com.boukouch.mini_projet
+package com.boukouch.mini_projet.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.boukouch.mini_projet.R
+import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.adapter.Noteadapter
-
 import com.boukouch.mini_projet.dao.NoteHelper
-import com.boukouch.mini_projet.databinding.ActivityMainBinding
-import com.boukouch.mini_projet.databinding.ActivityMainNoteBinding
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity_note : AppCompatActivity() {
@@ -47,11 +45,18 @@ class MainActivity_note : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.mail_academique -> {Toast.makeText(this , "Mail Académique" , Toast.LENGTH_LONG).show()
-                    val intent = Intent( this, Recuperation_mot_pass_Activity::class.java)
+
+
+                R.id.Acceuil -> {Toast.makeText(this , "Acceuill" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, accueille::class.java)
                     startActivity(intent)
                 }
-                R.id.nav_message -> {
+
+                R.id.mail_academique -> {Toast.makeText(this , "Mail Académique" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, Recuperation_email_Activity::class.java)
+                    startActivity(intent)
+                }
+                R.id.note -> {
                     val intent = Intent(this, Home::class.java)
                     startActivity(intent)
                 }
@@ -60,17 +65,19 @@ class MainActivity_note : AppCompatActivity() {
                     startActivity(intent)
                     Log.d("Home", "memeo Home")
                 }
-                R.id.nav_settings -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_LONG).show()
-                R.id.nav_Comte -> Toast.makeText(applicationContext, "Clicked login", Toast.LENGTH_LONG).show()
-                R.id.nav_Password -> Toast.makeText(applicationContext, "Clicked login", Toast.LENGTH_LONG).show()
-                R.id.nav_share -> {
-                    val intent = Intent(this, MainActivity::class.java)
+                R.id.profile -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_LONG).show()
+
+                R.id.logout -> {
+                    Toast.makeText(applicationContext, "Logout", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
-                R.id.nav_feedback -> Toast.makeText(applicationContext, "Clicked FeedBack", Toast.LENGTH_LONG).show()
+
             }
             true
         }
+
 
         AddButton.setOnClickListener {
             val intent = Intent(this, addNoteActivity::class.java)
@@ -79,11 +86,9 @@ class MainActivity_note : AppCompatActivity() {
 
 
     }
-   override fun onResume() {
+    override fun onResume() {
         super.onResume()
         noteAdapter.refreshData(db.getAllNotes())
     }
-
-
 
 }

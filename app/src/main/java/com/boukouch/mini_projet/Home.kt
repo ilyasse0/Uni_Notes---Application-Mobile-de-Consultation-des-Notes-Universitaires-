@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import android.annotation.SuppressLint
+import com.boukouch.mini_projet.View.MainActivity_note
 
 class Home : AppCompatActivity(){
 
@@ -42,7 +43,7 @@ class Home : AppCompatActivity(){
                     val intent = Intent( this, Recuperation_mot_pass_Activity::class.java)
                     startActivity(intent)
                 }
-                R.id.nav_message -> {
+                R.id.note -> {
                     val intent = Intent(this@Home, Home::class.java)
                     startActivity(intent)
                 }
@@ -51,14 +52,12 @@ class Home : AppCompatActivity(){
                     startActivity(intent)
                     Log.d("Home", "memeo Home")
                 }
-                R.id.nav_settings -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
-                R.id.nav_Comte -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
-                R.id.nav_Password -> Toast.makeText(applicationContext , "Clicked login" , Toast.LENGTH_LONG).show()
-                R.id.nav_share -> {
-                    val intent = Intent(this@Home, MainActivity::class.java)
-                    startActivity(intent)
+                R.id.profile -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
+
+                R.id.logout -> {
+                    Toast.makeText(applicationContext , "Logout" , Toast.LENGTH_LONG).show()
                 }
-                R.id.nav_feedback -> Toast.makeText(applicationContext , "Clicked FeedBack" , Toast.LENGTH_LONG).show()
+
 
 
 

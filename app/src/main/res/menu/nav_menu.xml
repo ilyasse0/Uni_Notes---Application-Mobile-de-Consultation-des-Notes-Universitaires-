@@ -1,74 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
-
+    tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/nav_message"
-        android:icon="@drawable/baseline_event_note_24"
+        android:id="@+id/Acceuil"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Acceuil"/>
+
+    <item
+        android:id="@+id/note"
+        android:icon="@drawable/baseline_menu_book_24"
         android:title="Consulter Notes"/>
 
     <item
-    android:id="@+id/mail_academique"
-    android:icon="@drawable/baseline_message_24"
-    android:title="Récupération Mail académiques"/>
+        android:id="@+id/mail_academique"
+        android:icon="@drawable/baseline_attach_email_24"
+        android:title="Récupération Mail académiques"/>
 
     <item
         android:id="@+id/nav_Memo"
         android:icon="@drawable/baseline_message_24"
         android:title="Memo"/>
 
-
-
-
-
-
-
-    <item
-        android:id="@+id/nav_settings"
-        android:title="Parametre"
-        android:icon="@drawable/baseline_settings_24"
-        />
-
     <item
         android:title="Profile">
         <menu>
             <item
-                android:id="@+id/nav_Comte"
-                android:icon="@drawable/baseline_login_24"
-                android:title="Compte"/>
-
-            <item
-                android:id="@+id/nav_Password"
-                android:icon="@drawable/baseline_password_24"
-                android:title="Changer Mot de Pass"/>
+                android:id="@+id/profile"
+                android:title="Profile"
+                style="@style/NavDrawerText"
+                android:icon="@drawable/baseline_account_circle_24"/>
         </menu>
     </item>
 
-    <item android:title="Communicate">
-        <menu>
-            <item android:id="@+id/nav_share"
-                android:icon="@drawable/baseline_share_24"
-                android:title="Share"/>
-            <item
-                android:id="@+id/nav_feedback"
-                android:icon="@drawable/baseline_feedback_24"
-                android:title="Feed Back"
-
-                />
-        </menu>
-
-    </item>
-
-
-
-
-
-
-
-
-
+    <group>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/baseline_logout_24"
+            style="@style/NavDrawerText"
+            android:title="Logout"/>
+    </group>
 
 </menu>

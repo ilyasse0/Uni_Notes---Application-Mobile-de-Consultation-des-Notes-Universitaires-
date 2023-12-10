@@ -1,0 +1,19 @@
+<!-- res/drawable/indeterminate_progress.xml -->
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="100"
+    android:toDegrees="1080">
+    <shape
+        android:shape="ring"
+        android:innerRadiusRatio="3"
+        android:thicknessRatio="8"
+        android:useLevel="false">
+        <size
+            android:width="76dip"
+            android:height="76dip" />
+        <gradient
+            android:type="sweep"
+            android:useLevel="false"
+            android:startColor="#FFA500"
+        /> <!-- Orange color -->
+    </shape>
+</rotate>
