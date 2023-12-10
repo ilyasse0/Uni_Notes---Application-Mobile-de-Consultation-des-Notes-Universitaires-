@@ -8,8 +8,10 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -24,6 +26,7 @@ import com.boukouch.mini_projet.Controller.LoginController
 import com.boukouch.mini_projet.R
 import com.boukouch.mini_projet.R.layout
 import com.boukouch.mini_projet.VolleySingleton
+import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Etudiant
 import com.google.android.material.snackbar.Snackbar
@@ -46,6 +49,8 @@ class Profile : AppCompatActivity() {
     private var confirm_password: EditText? = null
     private var btn_save: Button? = null
     private var status: TextView? = null
+    private var show_password: CheckBox? = null
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +75,9 @@ class Profile : AppCompatActivity() {
         confirm_password=findViewById(R.id.confirm_password)
         btn_save=findViewById(R.id.btnsave)
         status=findViewById(R.id.status)
+        show_password = findViewById<CheckBox>(R.id.show_password)
+
+
 
         btn_save?.setOnClickListener {
             val old_password = old_password?.text.toString()
@@ -97,6 +105,23 @@ class Profile : AppCompatActivity() {
         container_1?.setOnClickListener{
             container_2?.visibility = View.GONE
             racine?.setBackgroundColor(Color.parseColor("#ffffff"))
+        }
+
+        show_password?.setOnCheckedChangeListener { _, isChecked ->
+            // Toggle the password visibility based on the CheckBox state
+            if (isChecked) {
+                old_password?.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                new_password?.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                confirm_password?.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                old_password?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                new_password?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                confirm_password?.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            // Move the cursor to the end of the text to update the display
+            old_password?.setSelection(old_password!!.text.length)
+            new_password?.setSelection(new_password!!.text.length)
+            confirm_password?.setSelection(confirm_password!!.text.length)
         }
 
     }
@@ -210,7 +235,7 @@ class Profile : AppCompatActivity() {
 
     fun onBackButtonClick(view: View) {
         // Create an Intent to start the activity_home.xml
-        val intent = Intent(this, Home::class.java)
+        val intent = Intent(this, accueille::class.java)
         startActivity(intent)
     }
 

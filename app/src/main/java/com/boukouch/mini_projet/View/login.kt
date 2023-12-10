@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,9 @@ class LoginActivity : AppCompatActivity() {
     private var forget_password: TextView? = null
     private var frgt_password: ImageView? = null
     private var show_password: CheckBox? = null
+    private lateinit var loadingProgressBar: ProgressBar
+    private lateinit var overlayLayout: RelativeLayout
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,9 @@ class LoginActivity : AppCompatActivity() {
         frgt_password = findViewById<ImageView>(R.id.frg_password)
         loading = findViewById<ProgressBar>(R.id.loading)
         show_password = findViewById<CheckBox>(R.id.show_password)
+        loadingProgressBar = findViewById(R.id.loadingProgressBar)
+        overlayLayout = findViewById(R.id.overlayLayout)
+
 
         btnLogin?.setOnClickListener {
 
@@ -45,9 +52,8 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordinput?.text.toString()
 
             if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
-                loading?.visibility = View.VISIBLE
+                setUiLoading(true)
                 LoginController.login(emailinput, passwordinput, this)
-                loading?.visibility = View.INVISIBLE
             } else {
                 Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show()
             }
@@ -73,6 +79,19 @@ class LoginActivity : AppCompatActivity() {
 
             // Move the cursor to the end of the text to update the display
             passwordinput?.setSelection(passwordinput!!.text.length)
+        }
+    }
+
+    private fun setUiLoading(isLoading: Boolean) {
+        if (isLoading) {
+
+            loadingProgressBar.visibility = View.VISIBLE
+            overlayLayout.visibility = View.VISIBLE
+            btnLogin?.isEnabled = false
+        } else {
+            loadingProgressBar.visibility = View.GONE
+            overlayLayout.visibility = View.GONE
+            btnLogin?.isEnabled = true
         }
     }
 }

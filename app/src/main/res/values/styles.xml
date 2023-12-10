@@ -41,4 +41,9 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18dp</item>
     </style>
+
+    <!-- res/values/styles.xml -->
+    <style name="OrangeProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@android:color/white</item>
+    </style>
 </resources>
