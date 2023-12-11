@@ -1,5 +1,6 @@
 package com.boukouch.mini_projet.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,11 +18,15 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.boukouch.mini_projet.Adapter.MatiereList
+import com.boukouch.mini_projet.adapter.MatiereList
 import com.boukouch.mini_projet.Controller.LoginController
+import com.boukouch.mini_projet.MainActivity
+import com.boukouch.mini_projet.Recuperation_mot_pass_Activity
 import com.boukouch.mini_projet.VolleySingleton
+import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Matiere
+import com.google.android.material.navigation.NavigationView
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -45,6 +50,7 @@ class Home : AppCompatActivity() {
     private var filiere: TextView? = null
     private var cne_etd: TextView? = null
     private var spinner: Spinner? = null
+    lateinit var navView : NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +61,7 @@ class Home : AppCompatActivity() {
         artistList = mutableListOf<Matiere>()
         nom = findViewById(R.id.nom)
         prenom = findViewById(R.id.prenom)
+        navView=findViewById(R.id.nav_view)
         filiere = findViewById(R.id.filier)
         cne_etd = findViewById(R.id.cne)
         spinner = findViewById<Spinner>(R.id.spiner) // Replace with your Spinner ID
@@ -78,6 +85,51 @@ class Home : AppCompatActivity() {
                 // Do nothing here
             }
         }
+
+
+        navView.setNavigationItemSelectedListener {
+
+            when(it.itemId){
+
+                R.id.Acceuil -> {Toast.makeText(this , "Acceuill" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, accueille::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.mail_academique -> {Toast.makeText(this , "Mail Académique" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, Recuperation_mot_pass_Activity::class.java)
+                    startActivity(intent)
+                }
+                R.id.note -> {
+                    val intent = Intent( this, Home::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_Memo -> {
+                    val intent = Intent(this, MainActivity_note::class.java)
+                    startActivity(intent)
+                }
+                R.id.profile -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
+
+
+
+                R.id.logout -> {
+                    Toast.makeText(applicationContext, "Logout", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
+
+
+
+
+
+            }
+            true
+        }
+
+
+
 
 
 

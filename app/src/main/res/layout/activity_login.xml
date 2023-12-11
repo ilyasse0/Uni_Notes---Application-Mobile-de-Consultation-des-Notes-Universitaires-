@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
+    android:layout_height="match_parent"
+    tools:context=".View.LoginActivity"
+    android:orientation="vertical"
+    android:background="@drawable/grad"
+    >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="30dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
 
         <!-- Your existing layout components -->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/photo_projet"/>
         <TextView
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Log in"
+            android:text="Log in:"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="30dp"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/EmailInput"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_edittext"
             android:drawableLeft="@drawable/email"
             android:hint="Username" />
@@ -43,7 +49,7 @@
             android:layout_height="65dp"
             android:inputType="textPassword"
             android:drawableLeft="@drawable/person"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_edittext"
             android:hint="Username" />
 
@@ -58,15 +64,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical">
-
-                <!-- CheckBox on the left -->
                 <CheckBox
                     android:id="@+id/show_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show password" />
 
-                <!-- Empty space to push TextView to the right -->
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -95,13 +98,12 @@
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginTop="40dp"
             style="@style/button_style"
             android:background="@drawable/button_style"
             android:text="LOGIN" />
     </LinearLayout>
-    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/overlayLayout"
@@ -118,4 +120,6 @@
             android:layout_centerInParent="true"
             android:visibility="gone" />
     </RelativeLayout>
+
+
 </RelativeLayout>

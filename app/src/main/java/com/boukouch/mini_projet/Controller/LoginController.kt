@@ -3,22 +3,17 @@ package com.boukouch.mini_projet.Controller
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.provider.ContactsContract.Profile
-import android.view.View
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.boukouch.mini_projet.View.Home
-import com.boukouch.mini_projet.VolleySingleton
 import com.boukouch.mini_projet.accueille
+import com.boukouch.mini_projet.VolleySingleton
+
 import com.boukouch.mini_projet.data.EndPoints
-import com.google.android.material.snackbar.Snackbar
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -46,6 +41,7 @@ import org.json.JSONObject
 
                     }else if(obj.getString("status")=="error"){
                         Toast.makeText(context.applicationContext, "Password Or CNE incorrect", Toast.LENGTH_LONG).show()
+
                         //val intent = Intent(context, Profile::class.java)
                         //context.startActivity(intent)
                     }

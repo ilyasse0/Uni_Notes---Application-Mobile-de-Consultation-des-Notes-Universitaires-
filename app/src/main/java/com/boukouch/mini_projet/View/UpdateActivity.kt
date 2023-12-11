@@ -17,7 +17,7 @@ class UpdateActivity : AppCompatActivity() {
     private var noteId :Int=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update)
+        setContentView(R.layout.activity_update_note)
 
         title_editEdit=findViewById(R.id.title_editEdit)
         content_editEDIT =findViewById(R.id.content_editEDIT)

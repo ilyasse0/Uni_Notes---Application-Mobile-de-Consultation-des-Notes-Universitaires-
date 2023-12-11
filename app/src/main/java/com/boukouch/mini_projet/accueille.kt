@@ -1,10 +1,9 @@
 package com.boukouch.mini_projet
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -17,11 +16,14 @@ import com.android.volley.Request.*
 import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
-import com.boukouch.mini_projet.Adapter.AnnoncesList
 import com.boukouch.mini_projet.Controller.LoginController
+import com.boukouch.mini_projet.adapter.AnnoncesList
 import com.boukouch.mini_projet.View.Home
+import com.boukouch.mini_projet.View.LoginActivity
+import com.boukouch.mini_projet.View.MainActivity_note
 import com.boukouch.mini_projet.View.Profile
 import com.boukouch.mini_projet.View.Recuperation_email_Activity
+import com.boukouch.mini_projet.View.ResetPassword
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Annonces
 import com.boukouch.mini_projet.model.Etudiant
@@ -32,15 +34,14 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class accueille : AppCompatActivity() {
+
+
     private var drawerLayout: DrawerLayout? = null
-    private var navView: NavigationView? = null
+    lateinit var navView : NavigationView
     lateinit var toggle : ActionBarDrawerToggle
     private var listView : ListView? =null
     private var annoncelist: MutableList<Annonces>? = null
     private lateinit var loadingProgressBar: ProgressBar
-
-
-
 
    companion object {
         private const val STATUS_SUCCESS = "success"
@@ -50,18 +51,23 @@ class accueille : AppCompatActivity() {
     private var userEmailTextView: TextView? = null
     private var image_profile: CircleImageView? = null
     //lateinit var home: Home
-    @SuppressLint("MissingInflatedId")
+
+    private var titel: TextView? = null
+    private var description: TextView? = null
+    private var date: TextView? = null
+    lateinit var home: Home
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_accueille)
-
         loadingProgressBar = findViewById(R.id.loadingProgressBar)
         drawerLayout = findViewById(R.id.drawerLayout)
-        navView = findViewById(R.id.nav_view)
         listView = findViewById(R.id.listViewAnnonce)
+        navView=findViewById(R.id.nav_view)
         annoncelist = mutableListOf<Annonces>()
-
-
 
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
@@ -79,59 +85,77 @@ class accueille : AppCompatActivity() {
         fetchStudentData("$cne")
 
 
-        navView?.setNavigationItemSelectedListener {
 
-            when (it.itemId) {
+        navView.setNavigationItemSelectedListener {
+
+            when(it.itemId){
+
+                R.id.Acceuil -> {Toast.makeText(this , "Acceuill" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, accueille::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.mail_academique -> {Toast.makeText(this , "Mail Académique" , Toast.LENGTH_LONG).show()
+                    val intent = Intent( this, Recuperation_email_Activity::class.java)
+                    startActivity(intent)
+                }
                 R.id.note -> {
                     val intent = Intent(this@accueille, Home::class.java)
                     startActivity(intent)
                 }
-
-                R.id.email -> {
-                    val intent = Intent(this, Recuperation_email_Activity::class.java)
+                R.id.nav_Memo -> {
+                    val intent = Intent(this, MainActivity_note::class.java)
                     startActivity(intent)
                 }
-
                 R.id.profile -> {
                     val intent = Intent(this, Profile::class.java)
                     startActivity(intent)
-                }
-                // R.id.nav_settings -> Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()
-                R.id.nav_Comte -> Toast.makeText(
-                    applicationContext,
-                    "Clicked login",
-                    Toast.LENGTH_LONG
-                ).show()
+                    Toast.makeText(applicationContext , "Clicked Settings" , Toast.LENGTH_LONG).show()}
 
-                R.id.nav_Password -> {
-                    Toast.makeText(applicationContext, "Clicked login", Toast.LENGTH_LONG).show()
-                }
 
-                R.id.nav_share -> {
-                    val intent = Intent(this, Home::class.java)
+
+                R.id.logout -> {
+                    Toast.makeText(applicationContext, "Logout", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
 
-                R.id.nav_feedback -> Toast.makeText(
-                    applicationContext,
-                    "Clicked FeedBack",
-                    Toast.LENGTH_LONG
-                ).show()
+
+
+
+
+
 
             }
             true
         }
-
-       setUiLoading(true)
         fetchAnnouncements()
+        setUiLoading(true)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     }
+
     private fun setUiLoading(isLoading: Boolean) {
         loadingProgressBar.isVisible = isLoading
         listView?.isVisible = !isLoading
     }
+
+
+
     private fun fetchAnnouncements() {
         // Check network connectivity here if needed
 
@@ -170,7 +194,6 @@ class accueille : AppCompatActivity() {
 
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
-
     //fetch data
     fun fetchStudentData(cne: String) {
         // Creating a volley string request
