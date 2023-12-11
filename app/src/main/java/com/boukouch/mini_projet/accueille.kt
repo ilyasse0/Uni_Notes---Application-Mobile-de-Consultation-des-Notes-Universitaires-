@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.isVisible
@@ -16,12 +17,16 @@ import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.boukouch.mini_projet.Adapter.AnnoncesList
+import com.boukouch.mini_projet.Controller.LoginController
 import com.boukouch.mini_projet.View.Home
 import com.boukouch.mini_projet.View.Profile
 import com.boukouch.mini_projet.View.Recuperation_email_Activity
 import com.boukouch.mini_projet.data.EndPoints
 import com.boukouch.mini_projet.model.Annonces
+import com.boukouch.mini_projet.model.Etudiant
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -36,13 +41,13 @@ class accueille : AppCompatActivity() {
 
 
 
-    companion object {
+   companion object {
         private const val STATUS_SUCCESS = "success"
         private const val DATA_KEY = "data"
     }
-    //private var titel: TextView? = null
-    //private var description: TextView? = null
-    //private var date: TextView? = null
+    private var userNameTextView: TextView? = null
+    private var userEmailTextView: TextView? = null
+    private var image_profile: CircleImageView? = null
     //lateinit var home: Home
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,13 +66,23 @@ class accueille : AppCompatActivity() {
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout?.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val headerView = navView?.getHeaderView(0)
+
+         userNameTextView = headerView?.findViewById<TextView>(R.id.user_name)
+         userEmailTextView = headerView?.findViewById<TextView>(R.id.email_aca)
+         image_profile = headerView?.findViewById(R.id.image_profile)
+        //userNameTextView?.text = "John Doe"
+       // userEmailTextView?.text = "john.doe@example.com"
+
+        var cne= LoginController.getUserCNE(this)
+        fetchStudentData("$cne")
 
 
         navView?.setNavigationItemSelectedListener {
 
             when (it.itemId) {
                 R.id.note -> {
-                    val intent = Intent(this, Home::class.java)
+                    val intent = Intent(this@accueille, Home::class.java)
                     startActivity(intent)
                 }
 
@@ -152,6 +167,74 @@ class accueille : AppCompatActivity() {
                 setUiLoading(false)
             }) {}
 
+        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+    }
+
+    //fetch data
+    fun fetchStudentData(cne: String) {
+        // Creating a volley string request
+        val stringRequest = object : StringRequest(
+            Request.Method.POST, EndPoints.link_profil,
+            Response.Listener<String> { response ->
+
+                try {
+                    val obj = JSONObject(response)
+                    if (obj.getString("status") == STATUS_SUCCESS) {
+                        val array = obj.getJSONArray(DATA_KEY)
+                        //Toast.makeText(this, "${array.toString()}", Toast.LENGTH_SHORT).show()
+                        if (array.length() > 0) {
+                            val array = obj.getJSONArray("data")
+
+                            for (i in 0..array.length() - 1) {
+                                val objectArtist = array.getJSONObject(i)
+                                val etudiant = Etudiant(
+                                    objectArtist.getString("nom"),
+                                    objectArtist.getString("prenom"),
+                                    objectArtist.getString("email"),
+                                    objectArtist.getString("cne"),
+                                    objectArtist.getString("email_acadimic"),
+                                    objectArtist.getString("password_email_aca"),
+                                    objectArtist.getString("profile")
+                                )
+                                userNameTextView?.setText("${etudiant.nom}_${etudiant.prenom}")
+                                userEmailTextView?.setText(etudiant.email_aca)
+                                if (!etudiant.profile.isNullOrBlank()) {
+                                    Glide.with(this)
+                                        .load("https://kotlinboukouchtest.000webhostapp.com/auth/upload/${etudiant.profile}")
+                                        .placeholder(R.drawable.profile_default) // Replace with your placeholder image resource
+                                        .error(R.drawable.profile_default) // Replace with your error image resource
+                                        .into(image_profile!!)
+                                } else {
+                                    // Handle the case where the profile image URL is empty or null
+                                }
+
+                            }
+                        }
+                    } else {
+                        Toast.makeText(this, "Ajiiiya", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }finally {
+                    setUiLoading(false)
+                }
+            },
+
+            object : Response.ErrorListener {
+                override fun onErrorResponse(volleyError: VolleyError) {
+                    // Handle error response
+                    volleyError.printStackTrace()
+                    setUiLoading(false)
+
+                }
+            }) {
+            override fun getParams(): Map<String, String> {
+                val params = HashMap<String, String>()
+                params["cne"] = cne
+                return params
+            }
+        }
+        // Adding request to the queue
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
 }

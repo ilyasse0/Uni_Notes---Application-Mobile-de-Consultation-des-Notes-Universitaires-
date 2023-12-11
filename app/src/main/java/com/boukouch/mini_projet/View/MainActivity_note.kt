@@ -1,4 +1,4 @@
-/*package com.boukouch.mini_projet.View
+package com.boukouch.mini_projet.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.boukouch.mini_projet.R
-import com.boukouch.mini_projet.adapter.Noteadapter
+import com.boukouch.mini_projet.Adapter.Noteadapter
 import com.boukouch.mini_projet.dao.NoteHelper
 import com.google.android.material.navigation.NavigationView
 
@@ -53,4 +53,4 @@ class MainActivity_note : AppCompatActivity() {
         noteAdapter.refreshData(db.getAllNotes())
     }
 
-}*/
+}

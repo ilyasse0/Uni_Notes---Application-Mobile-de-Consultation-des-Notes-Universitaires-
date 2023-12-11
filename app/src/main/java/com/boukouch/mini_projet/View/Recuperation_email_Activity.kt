@@ -54,7 +54,9 @@ class Recuperation_email_Activity : AppCompatActivity() {
                                     objectArtist.getString("email"),
                                     objectArtist.getString("cne"),
                                     objectArtist.getString("email_acadimic"),
-                                    objectArtist.getString("password_email_aca"))
+                                    objectArtist.getString("password_email_aca"),
+                                    objectArtist.getString("profile"),
+                                )
 
                                 email_aca?.setText(etudiant.email_aca)
                                 password?.setText(etudiant.password_email_aca)

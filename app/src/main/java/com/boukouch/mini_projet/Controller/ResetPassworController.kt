@@ -13,6 +13,7 @@ import com.boukouch.mini_projet.View.Home
 import com.boukouch.mini_projet.View.NewPassword
 import com.boukouch.mini_projet.View.VerificationCompte
 import com.boukouch.mini_projet.VolleySingleton
+import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.data.EndPoints
 import org.json.JSONException
 import org.json.JSONObject
@@ -121,7 +122,7 @@ object ResetPassworController {
                     val obj = JSONObject(response)
                     if(obj.getString("status")=="success"){
 
-                        val intent = Intent(context, Home::class.java)
+                        val intent = Intent(context, accueille::class.java)
                         context.startActivity(intent)
 
                     }

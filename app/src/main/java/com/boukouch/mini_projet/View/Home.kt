@@ -116,8 +116,28 @@ class Home : AppCompatActivity() {
                             }
                             // nom?.setText("dhhhhh")
                         }
-                    } else {
-                        Toast.makeText(this, "error ", Toast.LENGTH_SHORT).show()
+                    } else if(obj.getString("status") == "error") {
+                        makeText(this, "Vide", LENGTH_SHORT).show()
+                        artistList?.clear()
+
+                        val artist = Matiere(
+                            " ",
+                            " ",
+                            "",
+                            ""
+                        )
+                        nom?.text = ""
+                        prenom?.text = ""
+                        filiere?.text = ""
+                        cne_etd?.text = ""
+                        artistList?.add(artist)
+
+                        val adapter = MatiereList(this@Home, artistList!!)
+                        listView?.adapter = adapter
+                        //Toast.makeText(this, "${array.toString()}", Toast.LENGTH_SHORT).show()
+
+
+
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()

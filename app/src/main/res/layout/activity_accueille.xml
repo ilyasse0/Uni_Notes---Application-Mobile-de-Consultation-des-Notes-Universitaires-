@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".accueille">
 
-    <!-- Existing LinearLayout content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +21,14 @@
         </ListView>
 
     </LinearLayout>
-
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="wrap_content"
+        android:padding="170dp"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/background_progress"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
     <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -36,12 +42,5 @@
         <!-- Navigation Drawer content goes here -->
 
     </com.google.android.material.navigation.NavigationView>
-    <ProgressBar
-        android:id="@+id/loadingProgressBar"
-        android:layout_width="wrap_content"
-        android:padding="170dp"
-        android:layout_height="wrap_content"
-        android:indeterminateDrawable="@drawable/background_progress"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+
 </androidx.drawerlayout.widget.DrawerLayout>
