@@ -17,7 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".View.MainActivity_note"
+            android:name=".View.Annonce_Detaille"
+            android:exported="false" />
+        <activity
+            android:name=".View.Profile"
             android:exported="false" />
         <activity
             android:name=".View.Home"
@@ -44,7 +47,7 @@
             android:name=".accueille"
             android:exported="false" />
         <activity
-            android:name=".View.Profile"
+            android:name=".View.MainActivity_note"
             android:exported="false" />
         <activity
             android:name=".View.LoginActivity"

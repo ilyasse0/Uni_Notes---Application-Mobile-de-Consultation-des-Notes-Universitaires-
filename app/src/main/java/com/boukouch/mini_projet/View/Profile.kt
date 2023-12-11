@@ -14,9 +14,11 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
@@ -50,7 +52,14 @@ class Profile : AppCompatActivity() {
     private var btn_save: Button? = null
     private var status: TextView? = null
     private var show_password: CheckBox? = null
+    private lateinit var loadingProgressBar: ProgressBar
 
+
+
+    companion object {
+        private const val STATUS_SUCCESS = "success"
+        private const val DATA_KEY = "data"
+    }
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +67,8 @@ class Profile : AppCompatActivity() {
 
         val cne= LoginController.getUserCNE(this)
 
-        fetchStudentData("$cne")
+
+        //setUiLoading(true)
 
         textViewChangePassword=findViewById(R.id.textViewChangePassword)
         prenom=findViewById(R.id.prenom)
@@ -76,6 +86,8 @@ class Profile : AppCompatActivity() {
         btn_save=findViewById(R.id.btnsave)
         status=findViewById(R.id.status)
         show_password = findViewById<CheckBox>(R.id.show_password)
+        loadingProgressBar = findViewById(R.id.loadingProgressBar)
+
 
 
 
@@ -124,6 +136,14 @@ class Profile : AppCompatActivity() {
             confirm_password?.setSelection(confirm_password!!.text.length)
         }
 
+        setUiLoading(true)
+        fetchStudentData("$cne")
+
+    }
+
+    private fun setUiLoading(isLoading: Boolean) {
+        loadingProgressBar.isVisible = isLoading
+       // racine?.isVisible = !isLoading
     }
 
     fun fetchStudentData(cne: String) {
@@ -134,8 +154,8 @@ class Profile : AppCompatActivity() {
 
                 try {
                     val obj = JSONObject(response)
-                    if (obj.getString("status") == "success") {
-                        val array = obj.getJSONArray("data")
+                    if (obj.getString("status") == STATUS_SUCCESS) {
+                        val array = obj.getJSONArray(DATA_KEY)
                         //Toast.makeText(this, "${array.toString()}", Toast.LENGTH_SHORT).show()
                         if (array.length() > 0) {
                             val array = obj.getJSONArray("data")
@@ -148,7 +168,9 @@ class Profile : AppCompatActivity() {
                                     objectArtist.getString("email"),
                                     objectArtist.getString("cne"),
                                     objectArtist.getString("email_acadimic"),
-                                    objectArtist.getString("password_email_aca"))
+                                    objectArtist.getString("password_email_aca"),
+                                    objectArtist.getString("profile"),
+                                    )
 
                                 nom?.setText(etudiant.nom)
                                 prenom?.setText(etudiant.prenom)
@@ -160,6 +182,8 @@ class Profile : AppCompatActivity() {
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
+                }finally {
+                    setUiLoading(false)
                 }
             },
 
@@ -167,6 +191,8 @@ class Profile : AppCompatActivity() {
                 override fun onErrorResponse(volleyError: VolleyError) {
                     // Handle error response
                     volleyError.printStackTrace()
+                    setUiLoading(false)
+
                 }
             }) {
             override fun getParams(): Map<String, String> {

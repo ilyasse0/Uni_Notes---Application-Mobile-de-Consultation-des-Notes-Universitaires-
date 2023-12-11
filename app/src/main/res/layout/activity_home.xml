@@ -8,7 +8,6 @@
     android:id="@+id/drawerLayout"
     android:background="@color/white">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -84,8 +83,10 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Nom :"
+
                     android:fontFamily="@font/sfnsdisplay_black"
-                    android:layout_marginBottom="10dp"/>
+
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/nom"
@@ -102,6 +103,7 @@
                     android:gravity="center"
                     android:text="Prenom :"
                     android:fontFamily="@font/sfnsdisplay_black"
+                    android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:id="@+id/prenom"
@@ -126,6 +128,7 @@
                     android:fontFamily="@font/sfnsdisplay_black"
                     android:gravity="center"
                     android:text="Filière :"
+                    android:textStyle="bold"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -143,6 +146,7 @@
                     android:gravity="center"
                     android:fontFamily="@font/sfnsdisplay_black"
                     android:text="CNE :"
+                    android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:id="@+id/cne"

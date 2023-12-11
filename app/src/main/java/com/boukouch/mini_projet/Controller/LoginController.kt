@@ -45,7 +45,7 @@ import org.json.JSONObject
                         //val intent = Intent(context, Profile::class.java)
                         //context.startActivity(intent)
                     }
-                    Toast.makeText(context.applicationContext, obj.getString("status"), Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context.applicationContext, obj.getString("status"), Toast.LENGTH_LONG).show()
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }

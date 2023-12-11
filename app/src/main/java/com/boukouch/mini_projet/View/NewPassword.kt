@@ -1,5 +1,6 @@
 package com.boukouch.mini_projet.View
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.boukouch.mini_projet.Controller.ResetPassworController
 import com.boukouch.mini_projet.R
@@ -19,6 +21,9 @@ class NewPassword : AppCompatActivity() {
     private var show_password: CheckBox?=null
     private var btnLogin: Button?=null
     private var loading: ProgressBar?=null
+    private var loadingProgressBar: ProgressBar? = null
+    private var overlayLayout: RelativeLayout? = null
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new)
@@ -30,6 +35,8 @@ class NewPassword : AppCompatActivity() {
         ConfirmPasswordInput=findViewById<EditText>(R.id.ConfirmPasswordInput)
         show_password=findViewById<CheckBox>(R.id.show_password)
         btnLogin=findViewById<Button>(R.id.btnLogin)
+        loadingProgressBar=findViewById(R.id.loadingProgressBar)
+        overlayLayout=findViewById(R.id.overlayLayout)
 
 
         //initialisation de email
@@ -42,9 +49,8 @@ class NewPassword : AppCompatActivity() {
             val confirmpassword = ConfirmPasswordInput?.text.toString()
 
             if (!email.isNullOrBlank() && !password.isNullOrBlank() && !confirmpassword.isNullOrBlank() && password.toString()==confirmpassword.toString()) {
-                loading?.visibility = View.VISIBLE
+                setUiLoading(true)
                 ResetPassworController.newpassword(EmailInput,PasswordInput,this)
-                loading?.visibility = View.INVISIBLE
 
             }else if(!email.isNullOrBlank() && !password.isNullOrBlank() && !confirmpassword.isNullOrBlank() && password.toString()!=confirmpassword.toString()){
                 Toast.makeText(this, " password and confirmpassword must be equal ", Toast.LENGTH_SHORT).show()
@@ -68,6 +74,19 @@ class NewPassword : AppCompatActivity() {
             // Move the cursor to the end of the text to update the display
             PasswordInput?.setSelection(PasswordInput!!.text.length)
             ConfirmPasswordInput?.setSelection(ConfirmPasswordInput!!.text.length)
+        }
+    }
+
+    private fun setUiLoading(isLoading: Boolean) {
+        if (isLoading) {
+
+            loadingProgressBar?.visibility = View.VISIBLE
+            overlayLayout?.visibility = View.VISIBLE
+            btnLogin?.isEnabled = false
+        } else {
+            loadingProgressBar?.visibility = View.GONE
+            overlayLayout?.visibility = View.GONE
+            btnLogin?.isEnabled = true
         }
     }
 }

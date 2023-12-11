@@ -9,7 +9,7 @@
     android:orientation="vertical"
 
     android:background="@drawable/grad"
->
+    >
 
 
 
@@ -27,103 +27,103 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-        <!-- Your existing layout components -->
+            <!-- Your existing layout components -->
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/photo_projet"/>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Log in:"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="30dp"
-           android:fontFamily="@font/sfnsdisplay_black"
-            android:textColor="@color/black"
-            tools:ignore="MissingConstraints" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/photo_projet"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log in:"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/sfnsdisplay_black"
+                android:textColor="@color/black"
+                tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/EmailInput"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_edittext"
-            android:drawableLeft="@drawable/email"
-            android:fontFamily="@font/sfnstext_semibold"
-            android:hint="Username" />
+            <EditText
+                android:id="@+id/EmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawableLeft="@drawable/email"
+                android:fontFamily="@font/sfnstext_semibold"
+                android:hint="Username" />
 
-        <EditText
-            android:id="@+id/PasswordInput"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:inputType="textPassword"
-            android:drawableLeft="@drawable/person"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sfnstext_semibold"
-            android:background="@drawable/rounded_edittext"
-            android:hint="Username" />
+            <EditText
+                android:id="@+id/PasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/person"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sfnstext_semibold"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Username" />
 
 
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            >
-            <TableRow
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
-
-                <!-- CheckBox on the left -->
-                <CheckBox
-                    android:id="@+id/show_password"
-                    android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sfnstext_semibold"
-                    android:text="Show password" />
+                    android:gravity="center_vertical">
 
-                <!-- Empty space to push TextView to the right -->
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    <!-- CheckBox on the left -->
+                    <CheckBox
+                        android:id="@+id/show_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sfnstext_semibold"
+                        android:text="Show password" />
 
-                <!-- TextView on the right -->
-                <TextView
-                    android:id="@+id/forget_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Forget your password ?"
-                    android:fontFamily="@font/sfnstext_lightitalic"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    <!-- Empty space to push TextView to the right -->
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
 
-                <!-- ImageView as per your original code -->
-                <ImageView
-                    android:id="@+id/frg_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/vector"
-                    android:layout_gravity="center" />
-            </TableRow>
+                    <!-- TextView on the right -->
+                    <TextView
+                        android:id="@+id/forget_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Forget your password ?"
+                        android:fontFamily="@font/sfnstext_lightitalic"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-        </TableLayout>
+                    <!-- ImageView as per your original code -->
+                    <ImageView
+                        android:id="@+id/frg_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/vector"
+                        android:layout_gravity="center" />
+                </TableRow>
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            style="@style/button_style"
-            android:background="@drawable/button_style"
-            android:fontFamily="@font/sfnsdisplay_black"
-            android:text="LOGIN" />
-    </LinearLayout>
+            </TableLayout>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                style="@style/button_style"
+                android:background="@drawable/button_style"
+                android:fontFamily="@font/sfnsdisplay_black"
+                android:text="LOGIN" />
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/overlayLayout"

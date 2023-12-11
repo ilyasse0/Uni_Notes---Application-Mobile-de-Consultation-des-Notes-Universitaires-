@@ -23,6 +23,7 @@
         android:textSize="24sp"
         android:fontFamily="@font/sfnsdisplay_black"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
 
         android:text="Votre Comte Académique:"/>
     <TextView
