@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.boukouch.mini_projet.R
@@ -27,7 +28,7 @@ class AnnoncesList(private val context: Activity, internal var Annonces: List<An
 
         val date = listViewItem.findViewById(R.id.textViewDate) as TextView
         val titel = listViewItem.findViewById(R.id.textViewTitle) as TextView
-        val annonce_forme = listViewItem.findViewById(R.id.annnce_form) as RelativeLayout
+        val annonce_forme = listViewItem.findViewById(R.id.annnce_form) as LinearLayout
         //val description = listViewItem.findViewById(R.id.textViewTitle) as TextView
         //val image = listViewItem.findViewById(R.id.imagesource) as ImageView
 

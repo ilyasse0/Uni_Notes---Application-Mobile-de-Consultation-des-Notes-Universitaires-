@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordinput?.text.toString()
 
             if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
-                setUiLoading(true)
+                setUiLoading(false)
                 LoginController.login(emailinput, passwordinput, this)
             } else {
                 Toast.makeText(this, "Email and password cannot be empty", Toast.LENGTH_SHORT).show()
