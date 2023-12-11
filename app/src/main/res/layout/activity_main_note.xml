@@ -21,40 +21,40 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/NotesHeading"
-        android:layout_marginTop="16dp"
-        android:text="Votre Notes:"
-        android:textStyle="bold"
-        android:layout_marginStart="18dp"
-        android:textColor="@color/orange"
-        android:textSize="24sp"
-        />
-
-        <androidx.recyclerview.widget.RecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/notesRecycleView"
-            android:layout_marginTop="30dp"
-            android:padding="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:onClick="onBackButtonClick"
-            android:background="@drawable/orange_border"
-            android:layout_marginBottom="50dp"/>
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <TextView
+                android:id="@+id/NotesHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:text="Votre Notes:"
+                android:fontFamily="@font/sfnsdisplay_black"
+                android:textColor="@color/orange"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notesRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/orange_border"
+                android:onClick="onBackButtonClick"
+                android:padding="20dp" />
 
 
-
-
-
-    </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/Addbutton"
@@ -62,8 +62,12 @@
             android:layout_height="wrap_content"
             android:text="Add"
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:backgroundTint="@color/orange"
+            android:background="@drawable/orange_border"
+            android:fontFamily="@font/sfnstext_regularg1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

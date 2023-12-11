@@ -31,14 +31,16 @@
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/sfnsdisplay_black"
                 android:gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Diplome Universitaire de Technolgie"
+                android:text="École Supérieure de Technologie"
                 android:layout_gravity="center"
                 android:textSize="20sp"
+                android:fontFamily="@font/sfnstext_regularg1"
                 android:textStyle="bold"
                 android:gravity="center"/>
 
@@ -56,6 +58,7 @@
                     android:textSize="15sp"
                     android:paddingTop="9dp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/sfnsdisplay_black"
                     android:text="Semetre" />
 
                 <Spinner
@@ -81,6 +84,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Nom :"
+                    android:fontFamily="@font/sfnsdisplay_black"
                     android:layout_marginBottom="10dp"/>
 
                 <TextView
@@ -89,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:fontFamily="@font/sfnstext_regularg1"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_width="0dp"
@@ -96,12 +101,14 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Prenom :"
+                    android:fontFamily="@font/sfnsdisplay_black"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:id="@+id/prenom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/sfnstext_regularg1"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"/>
 
@@ -116,6 +123,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/sfnsdisplay_black"
                     android:gravity="center"
                     android:text="Filière :"
                     android:layout_marginBottom="10dp"/>
@@ -125,6 +133,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/sfnstext_regularg1"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"/>
                 <TextView
@@ -132,6 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:fontFamily="@font/sfnsdisplay_black"
                     android:text="CNE :"
                     android:layout_marginLeft="10dp"/>
                 <TextView
@@ -140,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:fontFamily="@font/sfnstext_regularg1"
                     android:layout_marginLeft="10dp"/>
 
 
@@ -168,6 +179,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/table_border"
                         android:text="Module"
+                        android:fontFamily="@font/sfnsdisplay_black"
                         android:textSize="20sp"
                         android:textStyle="bold"
 
@@ -178,6 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Note"
+                        android:fontFamily="@font/sfnsdisplay_black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -187,6 +200,7 @@
                         android:layout_weight="1"
                         android:text="A U"
                         android:textSize="20sp"
+                        android:fontFamily="@font/sfnsdisplay_black"
                         android:textStyle="bold" />
 
                     <TextView
@@ -194,6 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Résultat"
+                        android:fontFamily="@font/sfnsdisplay_black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </TableRow>

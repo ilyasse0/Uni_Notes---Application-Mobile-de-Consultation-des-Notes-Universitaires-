@@ -27,11 +27,13 @@
         android:text="Verification of Compte"
         android:textSize="30dp"
         android:textStyle="bold"
+        android:fontFamily="@font/sfnsdisplay_black"
         tools:ignore="MissingConstraints" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
+        android:fontFamily="@font/sfnstext_regularg1"
         android:text="Please, enter your email address. You will receive a link to create a new password via email."
         />
 
@@ -49,6 +51,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/person"
+        android:fontFamily="@font/sfnstext_semibold"
         android:inputType="textPassword"
         android:background="@drawable/rounded_edittext_bg"
         android:hint="Verification Code" />
@@ -57,6 +60,9 @@
         android:id="@+id/show_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfnstext_lightitalic"
+        android:textStyle="bold"
+
         android:text="Show password" />
 
     <Button
@@ -65,6 +71,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         style="@style/button_style"
+        android:fontFamily="@font/sfnsdisplay_black"
         android:background="@drawable/button_style"
         android:text="Send" />
 

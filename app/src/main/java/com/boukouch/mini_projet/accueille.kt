@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import com.android.volley.Request
+import com.android.volley.Request.*
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.boukouch.mini_projet.adapter.AnnoncesList
@@ -140,7 +141,7 @@ class accueille : AppCompatActivity() {
         // Check network connectivity here if needed
 
         val stringRequest = object : StringRequest(
-            Request.Method.POST, EndPoints.link_select_annonces,
+            Method.POST, EndPoints.link_select_annonces,
             Response.Listener<String> { response ->
                 try {
                     val obj = JSONObject(response)

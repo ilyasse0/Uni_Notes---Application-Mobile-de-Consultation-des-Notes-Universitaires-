@@ -11,19 +11,30 @@
     >
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:src="@drawable/email_img"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:fontFamily="@font/sfnsdisplay_black"
+        android:layout_marginBottom="30dp"
+
+        android:text="Votre Comte Académique:"/>
     <TextView
         android:id="@+id/email_aca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="m.boukouch@umi.com"
         android:layout_gravity="center"
-        android:textSize="25dp"
+        android:textColor="@color/bleu"
+        android:fontFamily="@font/sfnstext_semibold"
+        android:backgroundTint="@color/bleu"
+        android:textSize="25sp"
         android:textStyle="bold"
         />
     <TextView
@@ -36,5 +47,13 @@
         android:layout_gravity="center"
         android:textSize="30dp"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+
+        android:fontFamily="@font/sfnstext_lightitalic"
+        android:text="Ce compte a été généré automatiquement pour accéder aux plateformes de l'espace étudiant de l'université. Veuillez le sécuriser et contacter le service informatique en cas de problème."/>
 
 </LinearLayout>

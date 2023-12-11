@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/addNoteHeading"
         android:layout_alignParentTop="true"
-
+        android:fontFamily="@font/sfnsdisplay_black"
         android:text="Add Note:"
         android:textStyle="bold"
         android:textSize="25sp"
@@ -45,6 +45,7 @@
         android:padding="12dp"
         android:textSize="20dp"
         android:layout_below="@id/addNoteHeading"
+        android:fontFamily="@font/sfnstext_semibold"
         android:background="@drawable/orange_border"
         android:layout_marginTop="16dp"
         android:maxLines="1" />
@@ -55,6 +56,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="12dp"
         android:background="@drawable/orange_border"
+        android:fontFamily="@font/sfnstext_semibold"
         android:gravity="top"
         android:hint="Entrer the description"
         android:padding="12dp" />

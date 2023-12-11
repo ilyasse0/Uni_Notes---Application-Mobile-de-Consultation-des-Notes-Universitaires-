@@ -63,9 +63,12 @@ class MainActivity_note : AppCompatActivity() {
                 R.id.nav_Memo -> {
                     val intent = Intent(this, MainActivity_note::class.java)
                     startActivity(intent)
-                    Log.d("Home", "memeo Home")
+
                 }
-                R.id.profile -> Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_LONG).show()
+                R.id.profile -> {Toast.makeText(applicationContext, "Clicked Settings", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, Profile::class.java)
+                    startActivity(intent)
+                }
 
                 R.id.logout -> {
                     Toast.makeText(applicationContext, "Logout", Toast.LENGTH_LONG).show()

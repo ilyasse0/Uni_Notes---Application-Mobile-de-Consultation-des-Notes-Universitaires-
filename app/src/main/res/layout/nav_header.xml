@@ -7,10 +7,11 @@
     android:layout_marginStart="16dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:background="@color/black"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/umi_logo"
+        android:background="@color/bleu"
+
 
        />
 
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/user_name"
         android:paddingTop="8dp"
+        android:fontFamily="@font/sfnsdisplay_black"
         android:textSize="20dp"
         android:text="Etudiant_Nom"
         android:textStyle="bold"/>
@@ -26,6 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfnsdisplay_black"
         android:textSize="16dp"
         android:text="Mail_Academique"/>
 

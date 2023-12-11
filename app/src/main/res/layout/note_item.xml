@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/titleTextView"
                 android:text="Title"
+                android:fontFamily="@font/sfnsdisplay_black"
                 android:textColor="@color/orange"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
@@ -53,6 +54,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/contentTextView"
             android:text="Content"
+            android:fontFamily="@font/sfnstext_semibold"
             android:maxLines="3"
             android:layout_marginTop="4dp"/>
     </LinearLayout>
