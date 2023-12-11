@@ -1,4 +1,4 @@
-package com.boukouch.mini_projet.Adapter
+package com.boukouch.mini_projet.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context

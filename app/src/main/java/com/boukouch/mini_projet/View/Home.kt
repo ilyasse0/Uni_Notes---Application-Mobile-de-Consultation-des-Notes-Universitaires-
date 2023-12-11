@@ -25,8 +25,11 @@ import com.boukouch.mini_projet.Recuperation_mot_pass_Activity
 import com.boukouch.mini_projet.VolleySingleton
 import com.boukouch.mini_projet.accueille
 import com.boukouch.mini_projet.data.EndPoints
+import com.boukouch.mini_projet.model.Etudiant
 import com.boukouch.mini_projet.model.Matiere
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
+import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -52,6 +55,14 @@ class Home : AppCompatActivity() {
     private var spinner: Spinner? = null
     lateinit var navView : NavigationView
 
+    private var userNameTextView: TextView? = null
+    private var userEmailTextView: TextView? = null
+    private var image_profile: CircleImageView? = null
+    companion object {
+        private const val STATUS_SUCCESS = "success"
+        private const val DATA_KEY = "data"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -66,7 +77,19 @@ class Home : AppCompatActivity() {
         cne_etd = findViewById(R.id.cne)
         spinner = findViewById<Spinner>(R.id.spiner) // Replace with your Spinner ID
 
+
+        val headerView = navView?.getHeaderView(0)
+        userNameTextView = headerView?.findViewById<TextView>(R.id.user_name)
+        userEmailTextView = headerView?.findViewById<TextView>(R.id.email_aca)
+        image_profile = headerView?.findViewById(R.id.image_profile)
+        //userNameTextView?.text = "John Doe"
+        // userEmailTextView?.text = "john.doe@example.com"
+
+
+
+
         val cne= LoginController.getUserCNE(this)
+        fetchStudentData("$cne")
         // 3. Create an ArrayAdapter and set it to the Spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerData)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -217,6 +240,76 @@ class Home : AppCompatActivity() {
         // Adding request to the queue
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
+
+
+    fun fetchStudentData(cne: String) {
+        // Creating a volley string request
+        val stringRequest = object : StringRequest(
+            Request.Method.POST, EndPoints.link_profil,
+            Response.Listener<String> { response ->
+
+                try {
+                    val obj = JSONObject(response)
+                    if (obj.getString("status") == STATUS_SUCCESS) {
+                        val array = obj.getJSONArray(DATA_KEY)
+                        //Toast.makeText(this, "${array.toString()}", Toast.LENGTH_SHORT).show()
+                        if (array.length() > 0) {
+                            val array = obj.getJSONArray("data")
+
+                            for (i in 0..array.length() - 1) {
+                                val objectArtist = array.getJSONObject(i)
+                                val etudiant = Etudiant(
+                                    objectArtist.getString("nom"),
+                                    objectArtist.getString("prenom"),
+                                    objectArtist.getString("email"),
+                                    objectArtist.getString("cne"),
+                                    objectArtist.getString("email_acadimic"),
+                                    objectArtist.getString("password_email_aca"),
+                                    objectArtist.getString("profile")
+                                )
+                                userNameTextView?.setText("${etudiant.nom}_${etudiant.prenom}")
+                                userEmailTextView?.setText(etudiant.email_aca)
+                                if (!etudiant.profile.isNullOrBlank()) {
+                                    Glide.with(this)
+                                        .load("https://kotlinboukouchtest.000webhostapp.com/auth/upload/${etudiant.profile}")
+                                        .placeholder(R.drawable.profile_default) // Replace with your placeholder image resource
+                                        .error(R.drawable.profile_default) // Replace with your error image resource
+                                        .into(image_profile!!)
+                                } else {
+                                    // Handle the case where the profile image URL is empty or null
+                                }
+
+                            }
+                        }
+                    } else {
+                        Toast.makeText(this, "Ajiiiya", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }finally {
+                    //setUiLoading(false)
+                }
+            },
+
+            object : Response.ErrorListener {
+                override fun onErrorResponse(volleyError: VolleyError) {
+                    // Handle error response
+                    volleyError.printStackTrace()
+                   //setUiLoading(false)
+
+                }
+            }) {
+            override fun getParams(): Map<String, String> {
+                val params = HashMap<String, String>()
+                params["cne"] = cne
+                return params
+            }
+        }
+        // Adding request to the queue
+        VolleySingleton.instance?.addToRequestQueue(stringRequest)
+    }
+
+
 
 
 }

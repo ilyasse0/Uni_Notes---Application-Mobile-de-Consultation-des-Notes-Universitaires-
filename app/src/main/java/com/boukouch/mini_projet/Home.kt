@@ -58,10 +58,6 @@ class Home : AppCompatActivity(){
                     Toast.makeText(applicationContext , "Logout" , Toast.LENGTH_LONG).show()
                 }
 
-
-
-
-
             }
             true
         }

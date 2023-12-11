@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/white"
-    tools:context=".View.Recuperation_email_Activity"
-    >
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/white"
+        tools:context=".View.Recuperation_email_Activity">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_marginTop="30dp"
@@ -30,9 +36,9 @@
         android:id="@+id/email_aca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="m.boukouch@umi.com"
         android:layout_gravity="center"
         android:textColor="@color/bleu"
+        android:hint="Loading..."
         android:fontFamily="@font/sfnstext_semibold"
         android:backgroundTint="@color/bleu"
         android:textSize="25sp"
@@ -42,9 +48,9 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="adgvsghdvzdbg"
         android:textColor="@color/green"
         android:textStyle="bold"
+
         android:layout_gravity="center"
         android:textSize="30dp"
         />
@@ -58,3 +64,4 @@
         android:text="Ce compte a été généré automatiquement pour accéder aux plateformes de l'espace étudiant de l'université. Veuillez le sécuriser et contacter le service informatique en cas de problème."/>
 
 </LinearLayout>
+</ScrollView>

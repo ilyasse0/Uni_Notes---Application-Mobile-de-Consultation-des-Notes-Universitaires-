@@ -13,7 +13,7 @@
         android:id="@+id/image_profile"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:src="@drawable/cv_pictr"
+        android:src="@drawable/profile_default"
         />
 
     <TextView
